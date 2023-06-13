@@ -12,8 +12,8 @@ const Calendar = () => {
         <>
             <div className="calendar">
                 <Header />
-                <Titlecontainer title="All Calendar" />
-                <Navbar title="calendar" />
+                <Titlecontainer />
+                <Navbar />
                 <div>
                     <Outlet />
                 </div>

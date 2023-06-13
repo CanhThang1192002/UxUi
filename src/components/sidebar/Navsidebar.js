@@ -1,18 +1,40 @@
 import {
     NavLink
 } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { showAddWorkspace } from "../../store/actions/ShowForm";
+import { addWorkspace } from "../../store/actions/Workspace_action";
+import { setpageWorkspace } from "../../store/actions/Page";
 import { AiFillClockCircle, AiFillCalendar, AiOutlinePlus, AiFillStar, AiFillSetting, AiFillBell } from "react-icons/ai";
 import '../../styles/sidebar/Navsidebar.scss';
-import Form_AddWorkspace from '../body/Form_AddWorkspace';
 
 const Navsidebar = () => {
+    const Workspaces_name = useSelector(state => state.WorkspaceRedux.Workspaces_name);
     const dispatch = useDispatch();
-    const WorkspaceRedux = useSelector(state => state.WorkspaceRedux.WorkspaceRedux);
+    const [show, setShow] = useState(false);
+    const [workspace, setWorkspace] = useState([]);
+    const ShowAddWorkspace = () => {
+        setShow(true);
+    }
+    const add = () => {
+        dispatch(addWorkspace(workspace));
+        setShow(false);
+    }
     return (
         <>
-            <Form_AddWorkspace />
+            <Modal show={show}>
+                <Modal.Header>Add Workspace</Modal.Header>
+                <Modal.Body>
+                    <input type="text" placeholder="Workspace name" onChange={(e) => setWorkspace(e.target.value)} />
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={() => add()}>Add</Button>
+                    <Button onClick={() => setShow(false)}>Close</Button>
+                </Modal.Footer>
+            </Modal>
+
             <div className="Navsidebar">
                 <div className="nav_logo"> logo</div>
                 <div className="nav_config">
@@ -32,15 +54,13 @@ const Navsidebar = () => {
                 <div className="nav_workspace">
                     <div className='workspace_header'>
                         <span>Workspace</span>
-                        <AiOutlinePlus className="AiOutlinePlus" onClick={() => dispatch(showAddWorkspace())} />
-                        <div>
+                        <AiOutlinePlus className="AiOutlinePlus" onClick={() => ShowAddWorkspace()} />
+                        <div className="workspace_list">
                             {
-                                (WorkspaceRedux && WorkspaceRedux.length > 0) &&
-                                WorkspaceRedux.map((item, index) => {
+                                Workspaces_name && Workspaces_name.length > 0 && Workspaces_name.map((item, index) => {
                                     return (
-                                        <div key={index} className='workspace_header_item'>
-                                            {/* <span>{item.task}</span> */}
-                                            <NavLink to="/workspace">{item.task}</NavLink>
+                                        <div className="workspace_item" key={index}>
+                                            <NavLink to="/workspace" onClick={() => dispatch(setpageWorkspace(item))}>{item}</NavLink>
                                         </div>
                                     )
                                 })

@@ -1,13 +1,13 @@
 const initialState = {
     show: false,
 }
-const ShowForm = (state = initialState, action) => {
+const ShowForm_AddTasks = (state = initialState, action) => {
     switch (action.type) {
-        case 'SHOW_ADD_WORKSPACE':
+        case 'SHOW_ADD_TASKS':
             return {
                 show: true
             }
-        case 'CLOSE_ADD_WORKSPACE':
+        case 'CLOSE_ADD_TASKS':
             return {
                 show: false
             }
@@ -15,4 +15,4 @@ const ShowForm = (state = initialState, action) => {
             return state
     }
 }
-export default ShowForm;
+export default ShowForm_AddTasks;

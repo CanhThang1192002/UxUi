@@ -4,3 +4,10 @@ export const setpage = (Page) => {
         payload: Page
     }
 }
+
+export const setpageWorkspace = (PageWorkspace) => {
+    return {
+        type: 'SET_PAGE_WORKSPACE',
+        payload: PageWorkspace
+    }
+}

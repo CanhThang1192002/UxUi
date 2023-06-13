@@ -12,8 +12,8 @@ const Workspace = () => {
         <>
             <div className="mylife">
                 <Header />
-                <Titlecontainer title="Workspace" />
-                <Navbar title="Workspace" />
+                <Titlecontainer />
+                <Navbar />
                 <div>
                     <Outlet />
                 </div>

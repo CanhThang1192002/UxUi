@@ -12,8 +12,8 @@ const Mylife = () => {
         <>
             <div className="mylife">
                 <Header />
-                <Titlecontainer title="My Life" />
-                <Navbar title="mylife" />
+                <Titlecontainer />
+                <Navbar />
                 <div>
                     <Outlet />
                 </div>

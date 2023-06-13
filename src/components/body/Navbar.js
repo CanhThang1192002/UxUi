@@ -6,10 +6,11 @@ import { CgNotes } from "react-icons/cg";
 import {
     NavLink
 } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 
-const Navbar = (props) => {
-    const { title } = props;
+const Navbar = () => {
+    const title = useSelector(state => state.Page.Page);
     return (
         <>
             <div className="navbar">

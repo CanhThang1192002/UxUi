@@ -18,3 +18,24 @@ export const deleteTaskWorkspace = (id) => {
         payload: id
     }
 }
+
+export const addWorkspace = (workspace) => {
+    return {
+        type: 'ADD_WORKSPACE',
+        payload: workspace
+    }
+}
+
+export const deleteWorkspace = (id) => {
+    return {
+        type: 'DELETE_WORKSPACE',
+        payload: id
+    }
+}
+
+export const editWorkspace = (workspace) => {
+    return {
+        type: 'EDIT_WORKSPACE',
+        payload: workspace
+    }
+}
