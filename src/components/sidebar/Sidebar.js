@@ -27,7 +27,12 @@ const Sidebar = () => {
                     <Route path="alltasks" element={<Alltasks />} />
                     <Route path="bydate" element={<Bydate />} />
                 </Route>
-                <Route path="/workspace" element={<Workspace />} />
+                <Route path="/workspace" element={<Workspace />} >
+                    <Route path="bystatus" element={<Bystatus />} />
+                    <Route path="mytasks" element={<Mytasks />} />
+                    <Route path="alltasks" element={<Alltasks />} />
+                    <Route path="bydate" element={<Bydate />} />
+                </Route>
                 <Route path="/mylife" element={<Mylife />} >
                     <Route path="bystatus" element={<Bystatus />} />
                     <Route path="mytasks" element={<Mytasks />} />

@@ -7,8 +7,6 @@ import Form_AddTasks from './Form_AddTasks';
 
 const Titlecontainer = () => {
     const Page = useSelector(state => state.Page);
-    console.log(Page);
-    // const PageWorkspace = useSelector(state => state.Page.PageWorkspace);
     const dispatch = useDispatch();
     const [title, setTitle] = useState("");
     useEffect(() => {
@@ -20,13 +18,12 @@ const Titlecontainer = () => {
                 setTitle('All Calendar');
             }
             else {
-                // if (Page.Page === 'workspace') {
-                setTitle(Page.PageWorkspace);
-                // }
+                if (Page.Page === 'workspace') {
+                    setTitle(Page.PageWorkspace);
+                }
             }
         }
     }, []);
-    console.log(title);
     const clickaddtask = () => {
         dispatch(showAddTasks());
     }

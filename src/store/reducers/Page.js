@@ -5,13 +5,14 @@ const initState = {
 const Page = (state = initState, action) => {
     switch (action.type) {
         case 'SET_PAGE':
+            let Page = action.payload;
             return {
-                Page: action.payload
+                ...state, Page
             }
         case 'SET_PAGE_WORKSPACE':
-            console.log(action.payload);
+            let PageWorkspace = action.payload;
             return {
-                PageWorkspace: action.payload
+                ...state, PageWorkspace
             }
         default:
             return state;

@@ -1,12 +1,33 @@
 import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 import '../../styles/body/alltasks.scss';
 import '../../styles/body/mytasks.scss';
 const Alltasks = () => {
     const MyLifeRedux = useSelector(state => state.MyLifeRedux.MyLifeRedux);
     const WorkspaceRedux = useSelector(state => state.WorkspaceRedux.WorkspaceRedux);
     const title = useSelector(state => state.Page.Page);
+    const titleworkspace = useSelector(state => state.Page.PageWorkspace);
+    const [data, setData] = useState([]);
 
-    const data = (title === 'mylife') ? MyLifeRedux : WorkspaceRedux;
+    useEffect(() => {
+        if (title === 'mylife') {
+            setData(MyLifeRedux);
+        }
+        else {
+            if (title === 'workspace') {
+                setData(WorkspaceRedux);
+                if (data && data.length > 0) {
+                    setData(data.filter(item => item.workspace === titleworkspace));
+                }
+            }
+            else {
+                if (title === 'calendar') {
+                    setData(MyLifeRedux.concat(WorkspaceRedux));
+                }
+            }
+        }
+    }, []);
+
 
     const data_mytasks = data && data.length > 0 ? data.filter(item => item.member !== 1) : [];
 
