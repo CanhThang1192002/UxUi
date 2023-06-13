@@ -1,0 +1,36 @@
+.header {
+    background-color: #ffff;
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    border: 1px solid #7a7a7a;
+    border-radius: 40px;
+
+    .search {
+        margin: auto 10%;
+        width: 50%;
+        border: 1px solid #a5a3a3;
+        border-radius: 20px;
+        background-color: #f7f7f7;
+
+        .submit {
+            background-color: #f7f7f7;
+            border: 0;
+            height: 5vh;
+            width: 30px;
+            border-radius: 20px 0px 0px 20px;
+        }
+
+        .input_search {
+            background-color: #f7f7f7;
+            border: 0;
+            height: 5vh;
+            border-radius: 0px 20px 20px 0px;
+            width: 70%;
+        }
+
+        input:focus {
+            outline: none;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+.Navsidebar {
+    border: 1px solid #cccccc;
+    background-color: #f7f7f7;
+    height: 100vh;
+    width: 19%;
+    padding: 20px;
+
+    .nav_workspace {
+        .workspace_header {
+            .AiOutlinePlus {
+                float: right;
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+.titlecontainer {
+    background-color: #ffff;
+    height: 12vh;
+    width: 100%;
+
+    .title {
+        display: inline;
+        line-height: 12vh;
+    }
+
+    .bt_addtask {
+        margin: 3vh 10% 0 0;
+        padding: 1.5vh 2.5vh;
+        border-radius: 25px;
+        float: right;
+    }
+}

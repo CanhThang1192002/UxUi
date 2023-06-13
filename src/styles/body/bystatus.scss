@@ -1,0 +1,57 @@
+.bystatus {
+
+    .category_colum {
+
+        text-align: center;
+
+        .UnComplete {
+            display: inline-block;
+            width: 30%;
+            float: left;
+
+            .UnComplete_title {
+                color: #F96651;
+            }
+
+            .UnComplete_data {
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                min-height: 20vh;
+                background-color: #F7F7F7;
+            }
+        }
+
+        .Completed {
+            display: inline-block;
+            width: 30%;
+
+            .Completed_title {
+                color: #4D72D1;
+            }
+
+            .Completed_data {
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                min-height: 20vh;
+                background-color: #F7F7F7;
+            }
+        }
+
+        .Stopped {
+            display: inline-block;
+            width: 30%;
+            float: right;
+
+            .Stopped_title {
+                color: #F2C94C;
+            }
+
+            .Stopped_data {
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                min-height: 20vh;
+                background-color: #F7F7F7;
+            }
+        }
+    }
+}
