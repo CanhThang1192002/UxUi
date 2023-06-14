@@ -7,6 +7,9 @@ const Bystatus = () => {
     const title = useSelector(state => state.Page.Page);
     const titleworkspace = useSelector(state => state.Page.PageWorkspace);
     const [data, setData] = useState([]);
+    const [UnComplete, setUnComplete] = useState([]);
+    const [Completed, setCompleted] = useState([]);
+    const [Stopped, setStopped] = useState([]);
 
     useEffect(() => {
         if (title === 'mylife') {
@@ -14,21 +17,24 @@ const Bystatus = () => {
         }
         else {
             if (title === 'workspace') {
-                setData(WorkspaceRedux);
-                if (data && data.length > 0) {
-                    setData(data.filter(item => item.workspace === titleworkspace));
-                }
+                setData(WorkspaceRedux.filter(item => item.workspace === titleworkspace));
             }
             else {
                 if (title === 'calendar') {
-                    setData(MyLifeRedux.concat(WorkspaceRedux));
+                    setData([...WorkspaceRedux, ...MyLifeRedux]);
                 }
             }
         }
-    }, []);
-    const UnComplete = data && data.length > 0 ? data.filter(item => item.status === 'UnComplete') : [];
-    const Completed = data && data.length > 0 ? data.filter(item => item.status === 'Completed') : [];
-    const Stopped = data && data.length > 0 ? data.filter(item => item.status === 'Stopped') : [];
+    }, [titleworkspace, WorkspaceRedux, MyLifeRedux]);
+
+    useEffect(() => {
+        if (data && data.length > 0) {
+            setUnComplete(data.filter(item => item.status === 'UnComplete'));
+            setCompleted(data.filter(item => item.status === 'Completed'));
+            setStopped(data.filter(item => item.status === 'Stopped'));
+        }
+    }, [data]);
+
     return (
         <>
             <div className="bystatus">

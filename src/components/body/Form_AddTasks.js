@@ -41,13 +41,14 @@ function Example() {
         setShow_calendar(false);
     }
     const add = () => {
-        let task = { Task_name: task_name, Description: description, Deadline: deadline, Status: status, Member: member };
         if (Page === 'mylife' || (Page === 'calendar' && Page_calendar === 'mylife')) {
+            let task = { Task_name: task_name, Description: description, Deadline: deadline, Status: status, Member: member };
             dispatch(addTaskMylife(task));
             dispatch(closeAddTasks());
         }
         else {
             if (Page === 'workspace' || (Page === 'calendar' && Page_calendar === 'workspace')) {
+                let task = { Task: "OOP", Task_name: task_name, Description: description, Deadline: deadline, Status: status, Member: member };
                 dispatch(addTaskWorkspace(task));
                 dispatch(closeAddTasks());
             }
@@ -57,7 +58,7 @@ function Example() {
     return (
         <>
             <Modal show={show} >
-                <Modal.Header closeButton>
+                <Modal.Header >
                     <Modal.Title>Add Tasks</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>

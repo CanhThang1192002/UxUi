@@ -23,7 +23,7 @@ const Titlecontainer = () => {
                 }
             }
         }
-    }, []);
+    }, [Page.PageWorkspace]);
     const clickaddtask = () => {
         dispatch(showAddTasks());
     }
