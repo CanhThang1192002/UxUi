@@ -33,6 +33,7 @@ const Navsidebar = () => {
     const add = () => {
         dispatch(addWorkspace(workspace));
         setShow(false);
+        setWorkspace({ Workspaces_name: '', Workspaces_type: '' });
     }
     const click_workspace_name = (item) => {
         dispatch(setpage('workspace'));

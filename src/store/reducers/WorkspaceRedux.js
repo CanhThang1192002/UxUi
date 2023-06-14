@@ -2,7 +2,7 @@ const initState = {
     WorkspaceRedux: [
         { workspace: "OOP", task_name: "Complete week 1 ‘s assignment.", description: "Description: Work with Maria, John and Mia to solve the assignment of week 4, and create a repository for ex.", deadline: "14/10/2023", status: "Stopped", member: 1 },
         { workspace: "OOP", task_name: "Complete week 2 ‘s assignment.", description: "Description: Work with Maria, John and Mia to solve the assignment of week 4, and create a repository for ex.", deadline: "14/10/2023", status: "Completed", member: 3 },
-        { workspace: "OOP", task_name: "Complete week 3 ‘s assignment.", description: "Description: Work with Maria, John and Mia to solve the assignment of week 4, and create a repository for ex.", decodeURIComponenteadline: "14/10/2023", status: "UnComplete", member: 1 },
+        { workspace: "OOP", task_name: "Complete week 3 ‘s assignment.", description: "Description: Work with Maria, John and Mia to solve the assignment of week 4, and create a repository for ex.", deadline: "14/10/2023", status: "UnComplete", member: 1 },
     ],
     Workspaces: [
         { Workspaces_name: "OOP", Workspaces_type: "subject" },

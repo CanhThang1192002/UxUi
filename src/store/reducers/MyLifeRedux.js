@@ -9,6 +9,7 @@ const initState = {
 const MyLifeRedux = (state = initState, action) => {
     switch (action.type) {
         case 'ADD_TASK_MY_LIFE':
+            console.log(action.payload);
             return {
                 ...state, MyLifeRedux: [...state.MyLifeRedux, action.payload]
             }

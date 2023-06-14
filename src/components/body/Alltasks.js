@@ -8,7 +8,6 @@ const Alltasks = () => {
     const title = useSelector(state => state.Page.Page);
     const titleworkspace = useSelector(state => state.Page.PageWorkspace);
     const [data, setData] = useState([]);
-    const [data_mytasks, setdata_mytasks] = useState([]);
 
     useEffect(() => {
         if (title === 'mylife') {
@@ -26,13 +25,6 @@ const Alltasks = () => {
         }
     }, [titleworkspace, WorkspaceRedux, MyLifeRedux]);
 
-    useEffect(() => {
-        if (data && data.length > 0) {
-            setdata_mytasks(data.filter(item => item.member !== 1));
-        }
-    }, [data]);
-
-
 
     return (
         <>
@@ -41,7 +33,7 @@ const Alltasks = () => {
                 <hr />
                 <div className='mytasks_container'>
                     {
-                        data_mytasks && data_mytasks.length > 0 && data_mytasks.map((item, index) => {
+                        data && data.length > 0 && data.map((item, index) => {
                             if (item.status === 'Completed') {
                                 return (
                                     <div key={index} className='mytasks_container_item' id='Completed_mytasks'>
