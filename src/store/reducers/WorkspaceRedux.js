@@ -1,8 +1,8 @@
 const initState = {
     WorkspaceRedux: [
-        { workspace: "OOP", task_name: "Complete week 1 ‘s assignment.", description: "Description: Work with Maria, John and Mia to solve the assignment of week 4, and create a repository for ex.", deadline: "14/10/2023", status: "Stopped", member: 1 },
-        { workspace: "OOP", task_name: "Complete week 2 ‘s assignment.", description: "Description: Work with Maria, John and Mia to solve the assignment of week 4, and create a repository for ex.", deadline: "14/10/2023", status: "Completed", member: 3 },
-        { workspace: "OOP", task_name: "Complete week 3 ‘s assignment.", description: "Description: Work with Maria, John and Mia to solve the assignment of week 4, and create a repository for ex.", deadline: "14/10/2023", status: "UnComplete", member: 1 },
+        { workspace: "OOP", task_name: "Complete week 1 s assignment.", description: " Work with Maria, John and Mia to solve the assignment of week 4, and create a repository for ex.", deadline: "14/10/2023", status: "Stopped", member: 1 },
+        { workspace: "OOP", task_name: "Complete week 2 s assignment.", description: " Work with Maria, John and Mia to solve the assignment of week 4, and create a repository for ex.", deadline: "14/10/2023", status: "Completed", member: 3 },
+        { workspace: "OOP", task_name: "Complete week 3 s assignment.", description: " Work with Maria, John and Mia to solve the assignment of week 4, and create a repository for ex.", deadline: "14/10/2023", status: "UnComplete", member: 1 },
     ],
     Workspaces: [
         { Workspaces_name: "OOP", Workspaces_type: "subject" },
@@ -20,16 +20,18 @@ const WorkspaceRedux = (state = initState, action) => {
                 state
             }
         case 'DELETE_TASK_WORKSPACE':
+            let newWorkspaceRedux = state.WorkspaceRedux.filter((item, index) => item.task_name !== action.payload);
             return {
-                state
+                ...state, WorkspaceRedux: newWorkspaceRedux
             }
         case 'ADD_WORKSPACE':
             return {
                 ...state, Workspaces: [...state.Workspaces, action.payload]
             }
         case 'DELETE_WORKSPACE':
+            let newWorkspaces = state.Workspaces.filter((item, index) => item.Workspaces_name !== action.payload);
             return {
-                state
+                ...state, Workspaces: newWorkspaces
             }
         case 'EDIT_WORKSPACE':
             return {

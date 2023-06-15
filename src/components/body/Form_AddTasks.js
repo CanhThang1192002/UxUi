@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { toast } from 'react-toastify';
 import { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { closeAddTasks } from "../../store/actions/ShowForm_AddTasks";
@@ -48,6 +49,10 @@ function Example() {
         setShow_workspacename(false);
     }
     const add = () => {
+        if (!Task_name || !Description || !Deadline) {
+            toast.error('Please fill in all fields');
+            return;
+        }
         if (Page === 'mylife' || (Page === 'calendar' && Page_calendar === 'mylife')) {
             let Task = { task_name: Task_name, description: Description, deadline: Deadline, status: Status, member: Member };
             dispatch(addTaskMylife(Task));
@@ -60,6 +65,7 @@ function Example() {
                 dispatch(closeAddTasks());
             }
         }
+        toast.success('Add task success');
         setWorkspace_name('');
         setPage_calendar('');
         setTask_name('');

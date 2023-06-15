@@ -1,0 +1,94 @@
+.bydate {
+    overflow-y: auto;
+    width: 100%;
+    height: 69vh;
+    border-radius: 50px 50px 0 0;
+    background-color: #B9B9B9;
+
+    .bydate_top {
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin: auto;
+        padding: 0 33%;
+        border-radius: 50px 50px 0 0;
+        background-color: #DEE9FF;
+
+        .top_month {
+            font-size: 1.8rem;
+            font-weight: 600;
+            padding-right: 1rem;
+            height: 5vh;
+            line-height: 5vh;
+        }
+
+        .top_year {
+            font-size: 1.8rem;
+            font-weight: 600;
+            height: 5vh;
+            line-height: 5vh;
+        }
+
+        .top_icon {
+            float: right;
+
+            .AiFillCaret {
+                font-size: 1rem;
+                height: 5vh;
+                width: 5vh;
+                background-color: rgb(243, 243, 242);
+                margin-right: 5px;
+                text-align: center;
+                line-height: 5vh;
+                border-radius: 50%;
+                color: rgb(75, 76, 77);
+            }
+
+            .AiFillCaret:hover {
+                background-color: rgb(105, 106, 107);
+                color: rgb(41, 41, 40);
+            }
+        }
+    }
+
+    .bydate_content {
+
+        ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            text-align: center;
+
+            li {
+                width: calc(100% / 7);
+            }
+        }
+
+        .bydate_weeks {
+            padding-top: 5px;
+            background-color: #DEE9FF;
+
+            .weeks {
+                .bydate_weeks_item {
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .bydate_days {
+
+            .days {
+                .bydate_day_item {
+                    background-color: #F7F7F7;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    height: 15vh;
+                    border: 1px solid #DAD9D9;
+                    border-collapse: collapse;
+                }
+
+            }
+        }
+    }
+}

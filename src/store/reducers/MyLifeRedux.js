@@ -18,8 +18,9 @@ const MyLifeRedux = (state = initState, action) => {
                 state
             }
         case 'DELETE_TASK_MY_LIFE':
+            let newMyLifeRedux = state.MyLifeRedux.filter((item, index) => item.task_name !== action.payload);
             return {
-                state
+                ...state, MyLifeRedux: newMyLifeRedux
             }
         default:
             return state;

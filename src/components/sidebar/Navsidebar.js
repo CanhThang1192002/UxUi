@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from 'react-toastify';
 import { addWorkspace } from "../../store/actions/Workspace_action";
 import { setpageWorkspace, setpage } from "../../store/actions/Page";
 import { AiFillClockCircle, AiFillCalendar, AiOutlinePlus, AiFillStar, AiFillSetting, AiFillBell } from "react-icons/ai";
@@ -31,9 +32,14 @@ const Navsidebar = () => {
         setWorkspace({ ...workspace, Workspaces_name: e.target.value });
     }
     const add = () => {
+        if (!workspace.Workspaces_name || !workspace.Workspaces_type) {
+            toast.error('Please fill in all fields');
+            return;
+        }
         dispatch(addWorkspace(workspace));
         setShow(false);
         setWorkspace({ Workspaces_name: '', Workspaces_type: '' });
+        toast.success('Delete task successfully');
     }
     const click_workspace_name = (item) => {
         dispatch(setpage('workspace'));
