@@ -1,5 +1,5 @@
 const initState = {
-    Page: "",
+    Page: "calendar",
     PageWorkspace: ""
 }
 const Page = (state = initState, action) => {

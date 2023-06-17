@@ -110,7 +110,7 @@ const Navsidebar = () => {
                     </div>
                 </div>
                 <div className="nav_calendar" onClick={() => dispatch(setpage('calendar'))}>
-                    <NavLink to="/calendar">Calendar</NavLink>
+                    <NavLink to="/">Calendar</NavLink>
                     <AiFillCalendar />
                 </div>
                 <div className="nav_mylife" onClick={() => dispatch(setpage('mylife'))}>

@@ -10,7 +10,25 @@ import { useSelector } from 'react-redux';
 
 
 const Navbar = () => {
-    const title = useSelector(state => state.Page.Page);
+    let title = useSelector(state => state.Page.Page);
+    if (title === 'calendar') {
+        return (
+            <>
+                <div className="navbar">
+                    <HiPencilSquare id='HiPencilSquare' className='navbar_icon' />
+                    <NavLink to='/bystatus'>By status</NavLink>
+                    <BsFileEarmarkCheck className='navbar_icon' />
+                    <NavLink to='/mytasks'>My tasks</NavLink>
+                    <CgNotes className='navbar_icon' />
+                    <NavLink to='/alltasks'>All tasks</NavLink>
+                    <MdEventNote className='navbar_icon' />
+                    <NavLink to='/bydate'>By date</NavLink>
+                </div>
+
+                <hr />
+            </>
+        )
+    }
     return (
         <>
             <div className="navbar">
