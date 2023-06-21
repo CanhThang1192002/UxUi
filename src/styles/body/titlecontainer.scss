@@ -2,16 +2,41 @@
     background-color: #ffff;
     height: 10vh;
     width: 100%;
+    margin-top: 20px;
 
     .title {
         display: inline;
-        line-height: 12vh;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 40px;
+        line-height: 44px;
+        color: #363431;
+    }
+
+    .date_today {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 17px;
+        color: #636472;
     }
 
     .bt_addtask {
+        position: absolute;
+        top: 55px;
+        right: 20px;
         margin: 3vh 10% 0 0;
         padding: 1.5vh 2.5vh;
         border-radius: 25px;
+        border: 1px solid #236BFE;
         float: right;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        color: #236BFE;
     }
 }

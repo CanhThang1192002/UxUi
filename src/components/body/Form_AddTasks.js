@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { closeAddTasks } from "../../store/actions/ShowForm_AddTasks";
 import { addTaskMylife } from '../../store/actions/MyLife_action';
 import { addTaskWorkspace } from '../../store/actions/Workspace_action';
+import '../../styles/body/form_addtasks.scss'
 
 function Example() {
     const [Task_name, setTask_name] = useState("");
@@ -19,7 +20,6 @@ function Example() {
     const Page = useSelector(state => state.Page.Page);
     const [Page_calendar, setPage_calendar] = useState('');
     const [show_calendar, setShow_calendar] = useState(false);
-    const [show_workspacename, setShow_workspacename] = useState(false);
     const [workspace_name, setWorkspace_name] = useState('');
     const dispatch = useDispatch();
 
@@ -38,15 +38,16 @@ function Example() {
     }
     const clickWorkspace = () => {
         setPage_calendar('workspace');
-        setShow_calendar(false);
+        document.getElementById("work_mylife").style.display = "none";
     }
     const clickMylife = () => {
         setPage_calendar('mylife');
-        setShow_calendar(false);
+        document.getElementById("work_mylife").style.display = "none";
     }
+
     const clickWorkspacename = (e) => {
         setWorkspace_name(e);
-        setShow_workspacename(false);
+        document.getElementById("workspace_name").style.display = "none";
     }
     const add = () => {
         if (!Task_name || !Description || !Deadline) {
@@ -83,11 +84,11 @@ function Example() {
                     {
                         (Page === 'calendar') ?
                             <>
-                                <input placeholder="workspace or mylife" onClick={() => { setShow_calendar(true) }} value={Page_calendar} />
-                                <Modal show={show_calendar}>
-                                    <div onClick={() => clickWorkspace()}>Workspace</div>
-                                    <div onClick={() => clickMylife()}>MyLife</div>
-                                </Modal>
+                                <input className='input_calendar_work_mylife' placeholder="workspace or mylife" onClick={() => document.getElementById("work_mylife").style.display = "block"} value={Page_calendar} />
+                                <div id="work_mylife" style={{ display: "none" }}>
+                                    <div className='workspacename' onClick={() => clickWorkspace()}>Workspace</div>
+                                    <div className='mylifename' onClick={() => clickMylife()}>MyLife</div>
+                                </div>
 
                             </>
                             : null
@@ -97,18 +98,18 @@ function Example() {
                     {
                         (Page === 'workspace' || (Page === 'calendar' && Page_calendar === 'workspace')) ?
                             <>
-                                <input placeholder="Workspace Name" onClick={() => { setShow_workspacename(true) }} value={workspace_name} />
-                                <Modal show={show_workspacename}>
+                                <input className='input_workspace' placeholder="Workspace Name" onClick={() => document.getElementById("workspace_name").style.display = "block"} value={workspace_name} />
+                                <div id="workspace_name" style={{ display: "none" }}>
                                     {
                                         (Workspaces && Workspaces.length > 0) ?
                                             Workspaces.map((item, index) => {
                                                 return (
-                                                    <div key={index} onClick={() => clickWorkspacename(item.Workspaces_name)}>{item.Workspaces_name}</div>
+                                                    <div className='workspacenameitem' key={index} onClick={() => clickWorkspacename(item.Workspaces_name)}>{item.Workspaces_name}</div>
                                                 )
                                             })
                                             : null
                                     }
-                                </Modal>
+                                </div>
                             </>
                             : null
                     }

@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import '../../styles/body/bystatus.scss'
 const Bystatus = () => {
     const MyLifeRedux = useSelector(state => state.MyLifeRedux.MyLifeRedux);
@@ -10,6 +11,28 @@ const Bystatus = () => {
     const [UnComplete, setUnComplete] = useState([]);
     const [Completed, setCompleted] = useState([]);
     const [Stopped, setStopped] = useState([]);
+    const [month, setMonth] = useState(6);
+    const [year, setYear] = useState(2023);
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    const clickleft = () => {
+        if (month > 1)
+            setMonth(month - 1);
+        else {
+            setMonth(12);
+            setYear(year - 1);
+        }
+    }
+    const clickright = () => {
+        if (month < 12)
+            setMonth(month + 1);
+        else {
+            setMonth(1);
+            setYear(year + 1);
+        }
+    }
 
     useEffect(() => {
         if (title === 'mylife') {
@@ -38,12 +61,15 @@ const Bystatus = () => {
     return (
         <>
             <div className="bystatus">
-                <div className='month'> tháng </div>
-                <hr />
+                <div className='date'>
+                    <FaAngleLeft className='icon_left' onClick={() => clickleft()} />
+                    <span className="month">{monthNames[month - 1]} </span>
+                    <span className="year">{year}</span>
+                    <FaAngleRight className='icon_right' onClick={() => clickright()} />
+                </div>
                 <div className='category_colum'>
                     <div className='UnComplete'>
                         <div className="UnComplete_title">UnComplete</div>
-                        <hr />
                         <div className='UnComplete_data'>
                             {
                                 UnComplete && UnComplete.length > 0 && UnComplete.map((item, index) => {
@@ -58,7 +84,6 @@ const Bystatus = () => {
                     </div>
                     <div className='Completed'>
                         <div className='Completed_title'>Completed</div>
-                        <hr />
                         <div className='Completed_data'>
                             {
                                 Completed && Completed.length > 0 && Completed.map((item, index) => {
@@ -73,7 +98,6 @@ const Bystatus = () => {
                     </div>
                     <div className='Stopped'>
                         <div className='Stopped_title'>Stopped</div>
-                        <hr />
                         <div className='Stopped_data'>
                             {
                                 Stopped && Stopped.length > 0 && Stopped.map((item, index) => {

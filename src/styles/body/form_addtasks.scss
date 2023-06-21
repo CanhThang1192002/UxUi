@@ -1,0 +1,96 @@
+%inputStyle {
+    display: block;
+    width: 90%;
+    margin: 0px auto;
+    margin-top: 10px;
+    border-radius: 20px;
+    height: 40px;
+    padding: 0 10px 0 10px;
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    ;
+}
+
+.modal-content {
+    position: fixed;
+    top: 30px;
+    width: 350px;
+    // height: 530px;
+    border-radius: 24px;
+    margin-left: 80px;
+
+    .modal-header {
+        background-color: rgb(97, 119, 194);
+        border-radius: 22px 22px 0 0;
+        height: 45px;
+        padding: 0;
+
+        .modal-title.h4 {
+            margin: auto;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 25px;
+            color: white;
+        }
+    }
+
+    .modal-body {
+        .input_calendar_work_mylife {
+            @extend %inputStyle;
+        }
+
+        .input_workspace {
+            @extend %inputStyle;
+        }
+
+        .tasksname {
+            @extend %inputStyle;
+        }
+
+        .tasksdescription {
+            @extend %inputStyle;
+        }
+
+        #myDate {
+            @extend %inputStyle;
+        }
+
+        .workspacename {
+            @extend %inputStyle;
+            width: 70%;
+            margin-top: 5px;
+            height: 25px;
+            line-height: 25px;
+            border: 1px solid #ccc;
+            background-color: rgb(226, 223, 223);
+            border-radius: 15px;
+
+        }
+
+        .mylifename {
+            @extend %inputStyle;
+            width: 70%;
+            margin-top: 5px;
+            height: 25px;
+            line-height: 25px;
+            border: 1px solid #ccc;
+            background-color: rgb(226, 223, 223);
+            border-radius: 15px;
+        }
+
+        .workspacenameitem {
+            @extend %inputStyle;
+            width: 70%;
+            margin-top: 5px;
+            height: 25px;
+            line-height: 25px;
+            border: 1px solid #ccc;
+            background-color: rgb(226, 223, 223);
+            border-radius: 15px;
+        }
+    }
+}

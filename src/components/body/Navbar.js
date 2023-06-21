@@ -16,16 +16,15 @@ const Navbar = () => {
             <>
                 <div className="navbar">
                     <HiPencilSquare id='HiPencilSquare' className='navbar_icon' />
-                    <NavLink to='/bystatus'>By status</NavLink>
+                    <NavLink className="navbar_text" to='/bystatus'>By status</NavLink>
                     <BsFileEarmarkCheck className='navbar_icon' />
-                    <NavLink to='/mytasks'>My tasks</NavLink>
+                    <NavLink className="navbar_text" to='/mytasks'>My tasks</NavLink>
                     <CgNotes className='navbar_icon' />
-                    <NavLink to='/alltasks'>All tasks</NavLink>
+                    <NavLink className="navbar_text" to='/alltasks'>All tasks</NavLink>
                     <MdEventNote className='navbar_icon' />
-                    <NavLink to='/bydate'>By date</NavLink>
+                    <NavLink className="navbar_text" to='/bydate'>By date</NavLink>
                 </div>
 
-                <hr />
             </>
         )
     }
@@ -33,16 +32,14 @@ const Navbar = () => {
         <>
             <div className="navbar">
                 <HiPencilSquare id='HiPencilSquare' className='navbar_icon' />
-                <NavLink to={`/${title}/bystatus`}>By status</NavLink>
+                <NavLink className="navbar_text" to={`/${title}/bystatus`}>By status</NavLink>
                 <BsFileEarmarkCheck className='navbar_icon' />
-                <NavLink to={`/${title}/mytasks`}>My tasks</NavLink>
+                <NavLink className="navbar_text" to={`/${title}/mytasks`}>My tasks</NavLink>
                 <CgNotes className='navbar_icon' />
-                <NavLink to={`/${title}/alltasks`}>All tasks</NavLink>
+                <NavLink className="navbar_text" to={`/${title}/alltasks`}>All tasks</NavLink>
                 <MdEventNote className='navbar_icon' />
-                <NavLink to={`/${title}/bydate`}>By date</NavLink>
+                <NavLink className="navbar_text" to={`/${title}/bydate`}>By date</NavLink>
             </div>
-
-            <hr />
         </>
     )
 }

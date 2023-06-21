@@ -3,6 +3,7 @@ import Navsidebar from "./Navsidebar";
 import Favourite from "./config/Favourite";
 import Setting from "./config/Setting";
 import Notice from "./config/Notice";
+import Help from "./config/Help";
 import Calendar from "./calendar/Calendar";
 import Mylife from "./mylife/Mylife";
 import Bystatus from "../body/Bystatus";
@@ -20,6 +21,7 @@ const Sidebar = () => {
                 <Route path="/favourite" element={<Favourite />} />
                 <Route path="/setting" element={<Setting />} />
                 <Route path="/notice" element={<Notice />} />
+                <Route path="/help" element={<Help />} />
                 <Route path="/" element={<Calendar />} >
                     <Route index element={<Bystatus />} />
                     <Route path="bystatus" element={<Bystatus />} />

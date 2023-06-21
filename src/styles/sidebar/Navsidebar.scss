@@ -1,21 +1,317 @@
+// $iconColor: #363431;
+
+%titleStyle {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 23px;
+    color: #363431;
+}
+
+%configStyle {
+    display: none;
+    font-size: 20px;
+    color: #f01912;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
 .Navsidebar {
     border: 1px solid #cccccc;
     background-color: #f7f7f7;
     height: 100vh;
-    width: 19%;
+    width: 18%;
     padding: 20px;
 
+    .nav_logo {
+        // background-color: aqua;
+        height: 10vh;
+        // border: 1px solid black;
+    }
+
+    .nav_favourite {
+        // background-color: aqua;
+        height: 30px;
+        line-height: 30px;
+
+        .icon_favourite {
+            font-size: 25px;
+            float: right;
+            margin-right: 5px;
+        }
+
+        .navfavourite {
+            @extend %titleStyle;
+            text-decoration: none;
+        }
+    }
+
     .nav_workspace {
-        .workspace_header {
-            .AiOutlinePlus {
-                float: right;
-                cursor: pointer;
+        margin-top: 15px;
+        border-top: 2px solid #DAD9D9;
+        border-bottom: 2px solid #DAD9D9;
+        padding: 15px 0 15px 0px;
+
+        .workspace_title {
+            @extend %titleStyle;
+        }
+
+        .AiOutlinePlus {
+            float: right;
+            margin-right: 10px;
+            cursor: pointer;
+            font-size: 25px;
+            color: black;
+        }
+
+        .TiDelete {
+            float: right;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            color: rgb(73, 66, 66);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .workspace_list {
+            height: 100px;
+            overflow-y: auto;
+
+            .workspace_item {
+                margin: 5px 0 5px 0;
+
+                .icon {
+                    margin-left: 15px;
+                    width: 21px;
+                    height: 21px;
+                }
+
+                .nav_workspace_item {
+                    margin-left: 20px;
+                    text-decoration: none;
+                    @extend %titleStyle;
+                    font-size: 16px;
+                    line-height: 20px;
+                }
+
+            }
+        }
+    }
+
+    .nav_calendar {
+        // border: 1px solid black;
+        margin: 25px 0 25px 0;
+        height: 30px;
+        line-height: 30px;
+
+        .AiFillCalendar {
+            font-size: 23px;
+            float: right;
+            margin-right: 5px;
+            // color: #0893b7;
+        }
+
+        .navcalendar {
+            @extend %titleStyle;
+            text-decoration: none;
+        }
+    }
+
+    .nav_mylife {
+        // border: 1px solid black;
+        margin: 25px 0 25px 0;
+        height: 30px;
+        line-height: 30px;
+
+        .AiFillClockCircle {
+            font-size: 23px;
+            float: right;
+            margin-right: 5px;
+            // color: #0893b7;
+        }
+
+        .navmylife {
+            @extend %titleStyle;
+            text-decoration: none;
+        }
+    }
+
+    .setting_notice {
+        position: fixed;
+        bottom: 25px;
+        // left: 20px;
+
+        .nav_help {
+            height: 30px;
+            line-height: 30px;
+
+            .navhelp {
+                @extend %configStyle;
+            }
+
+            .icon {
+                font-size: 30px;
+                color: #363431;
+            }
+
+        }
+
+        .nav_help:hover {
+            .navhelp {
+                display: inline;
+            }
+
+            .icon {
+                color: #000000;
+            }
+        }
+
+        .nav_notice {
+            margin-top: 20px;
+            height: 30px;
+            line-height: 30px;
+            text-decoration: none;
+
+            .navnotice {
+                @extend %configStyle;
+            }
+
+            .icon {
+                font-size: 30px;
+                color: #363431;
+            }
+        }
+
+        .nav_notice:hover {
+            .navnotice {
+                display: inline;
+            }
+
+            .icon {
+                color: #000000;
+            }
+        }
+
+        .nav_setting {
+            height: 30px;
+            line-height: 30px;
+            margin-top: 20px;
+
+            .navsetting {
+                @extend %configStyle;
+            }
+
+            .icon {
+                font-size: 30px;
+                color: #363431;
+            }
+
+        }
+
+        .nav_setting:hover {
+            .navsetting {
+                display: inline;
+            }
+
+            .icon {
+                color: #000000;
             }
         }
     }
 
     a.active {
         // background-color: #04AA6D;
-        color: rgb(207, 9, 9);
+        color: #236BFE !important;
     }
+}
+
+//form add workspace
+%inputStyle {
+    display: block;
+    width: 90%;
+    margin: 0px auto;
+    margin-top: 10px;
+    border-radius: 20px;
+    height: 40px;
+    padding: 0 10px 0 10px;
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    ;
+}
+
+.formaddworkspace {
+    position: fixed;
+    top: 30px;
+
+    .modal-content {
+        width: 300px;
+        border-radius: 24px;
+        // height: 350px;
+        margin-bottom: 80px;
+
+        .header {
+            background-color: rgb(97, 119, 194);
+            border: 0;
+            text-align: center;
+            height: 45px;
+            line-height: 45px;
+
+            span {
+                color: white;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 18px;
+                margin-left: 60px;
+            }
+        }
+    }
+
+    .modal-body {
+
+        .input_sub_pro {
+            margin-top: 30px;
+            @extend %inputStyle;
+        }
+
+        #sub_pro {
+            @extend %inputStyle;
+            cursor: pointer;
+
+            .subject {
+                margin: 5px;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 18px;
+                border: 1px solid rgb(105, 101, 101);
+                border-radius: 20px;
+                background-color: rgb(226, 223, 223);
+            }
+
+            .project {
+                margin: 5px;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 18px;
+                border: 1px solid rgb(105, 101, 101);
+                border-radius: 20px;
+                background-color: rgb(226, 223, 223);
+            }
+
+        }
+
+        .input_workspace_name {
+            @extend %inputStyle;
+            margin-top: 30px;
+        }
+
+    }
+
 }

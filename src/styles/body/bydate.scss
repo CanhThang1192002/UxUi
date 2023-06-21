@@ -1,82 +1,94 @@
 .bydate {
-    overflow-y: auto;
-    width: 100%;
-    height: 69vh;
-    border-radius: 50px 50px 0 0;
-    background-color: #B9B9B9;
 
     .bydate_top {
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        margin: auto;
-        padding: 0 33%;
-        border-radius: 50px 50px 0 0;
+        text-align: center;
         background-color: #DEE9FF;
+        height: 25px;
+        line-height: 25px;
+        padding-right: 15px;
 
         .top_month {
-            font-size: 1.8rem;
+            font-family: 'Inter';
+            font-style: normal;
             font-weight: 600;
-            padding-right: 1rem;
-            height: 5vh;
-            line-height: 5vh;
+            font-size: 25px;
+            height: 25px;
+            line-height: 25px;
+            color: #4e4e52;
+            margin-right: 25px;
         }
 
         .top_year {
-            font-size: 1.8rem;
+            font-family: 'Inter';
+            font-style: normal;
             font-weight: 600;
-            height: 5vh;
-            line-height: 5vh;
+            font-size: 25px;
+            line-height: 19px;
+            color: #4e4e52;
+
         }
 
-        .top_icon {
-            float: right;
+        .AiFillCaretLeft {
+            font-size: 25px;
+            margin-right: 30px;
+        }
 
-            .AiFillCaret {
-                font-size: 1rem;
-                height: 5vh;
-                width: 5vh;
-                background-color: rgb(243, 243, 242);
-                margin-right: 5px;
-                text-align: center;
-                line-height: 5vh;
-                border-radius: 50%;
-                color: rgb(75, 76, 77);
-            }
-
-            .AiFillCaret:hover {
-                background-color: rgb(105, 106, 107);
-                color: rgb(41, 41, 40);
-            }
+        .AiFillCaretRight {
+            font-size: 25px;
+            margin-left: 30px;
         }
     }
 
     .bydate_content {
+        background-color: #B9B9B9;
+        border-left: 1px solid #DAD9D9;
+
 
         ul {
             display: flex;
             list-style: none;
             flex-wrap: wrap;
             text-align: center;
+            padding: 0;
+            margin: 0;
 
             li {
                 width: calc(100% / 7);
+
+                span {
+                    float: right;
+                    margin: 15px 15px 0 0;
+                    font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 20px;
+                    line-height: 13px;
+                }
             }
         }
 
         .bydate_weeks {
             padding-top: 5px;
+            padding-right: 15px;
             background-color: #DEE9FF;
 
             .weeks {
+                padding-bottom: 10px;
+
                 .bydate_weeks_item {
-                    font-size: 1.2rem;
+                    font-family: 'Inter';
+                    font-style: normal;
                     font-weight: 600;
+                    font-size: 19px;
+                    line-height: 19px;
+                    color: #636472;
                 }
             }
         }
 
         .bydate_days {
+            height: 350px;
+            overflow-y: scroll;
 
             .days {
                 .bydate_day_item {

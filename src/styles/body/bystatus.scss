@@ -1,4 +1,41 @@
+%titleStyle {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 22px;
+}
+
+%textStyle {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #363431;
+}
+
 .bystatus {
+
+    .date {
+        margin: 10px 0 5px 0px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 18px;
+        color: #000000;
+
+        .month {
+            margin-right: 20px;
+        }
+
+        .icon_left,
+        .icon_right {
+            cursor: pointer;
+            margin: 0 20px;
+        }
+    }
 
     .category_colum {
 
@@ -11,15 +48,23 @@
 
             .UnComplete_title {
                 color: #F96651;
+                padding-bottom: 10px;
+                @extend %titleStyle;
+                border-bottom: 2px solid #F96651;
             }
 
             .UnComplete_data {
+                overflow-y: auto;
+                height: 300px;
+                margin-top: 10px;
+
                 .category_colum_item {
                     border: 1px solid #ccc;
                     margin-top: 1vh;
-                    border-radius: 5px;
+                    border-radius: 10px;
                     min-height: 10vh;
-                    background-color: #F7F7F7;
+                    background-color: #DAD9D9;
+                    @extend %textStyle;
                 }
             }
         }
@@ -30,15 +75,23 @@
 
             .Completed_title {
                 color: #4D72D1;
+                padding-bottom: 10px;
+                @extend %titleStyle;
+                border-bottom: 2px solid #4D72D1;
             }
 
             .Completed_data {
+                overflow-y: auto;
+                height: 300px;
+                margin-top: 10px;
+
                 .category_colum_item {
                     border: 1px solid #ccc;
                     margin-top: 1vh;
-                    border-radius: 5px;
+                    border-radius: 10px;
                     min-height: 10vh;
-                    background-color: #F7F7F7;
+                    background-color: #DAD9D9;
+                    @extend %textStyle;
                 }
             }
         }
@@ -50,15 +103,23 @@
 
             .Stopped_title {
                 color: #F2C94C;
+                @extend %titleStyle;
+                padding-bottom: 10px;
+                border-bottom: 2px solid #F2C94C;
             }
 
             .Stopped_data {
+                overflow-y: auto;
+                height: 300px;
+                margin-top: 10px;
+
                 .category_colum_item {
                     border: 1px solid #ccc;
                     margin-top: 1vh;
-                    border-radius: 5px;
+                    border-radius: 10px;
                     min-height: 10vh;
-                    background-color: #F7F7F7;
+                    background-color: #DAD9D9;
+                    @extend %textStyle;
                 }
             }
         }

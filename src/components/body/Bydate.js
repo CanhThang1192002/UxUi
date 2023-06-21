@@ -65,12 +65,10 @@ const Bydate = () => {
 
         <div className="bydate">
             <div className='bydate_top'>
+                <AiFillCaretLeft className='AiFillCaretLeft' onClick={() => clickleft()} />
                 <span className='top_month'>{monthNames[month - 1]}</span>
                 <span className='top_year'>{year}</span>
-                <span className='top_icon'>
-                    <AiFillCaretLeft className='AiFillCaret' onClick={() => clickleft()} />
-                    <AiFillCaretRight className='AiFillCaret' onClick={() => clickright()} />
-                </span>
+                <AiFillCaretRight className='AiFillCaretRight' onClick={() => clickright()} />
 
             </div>
             <div className='bydate_content'>
@@ -91,7 +89,7 @@ const Bydate = () => {
                             (day && day.length > 0) ?
                                 day.map((item, index) => {
                                     return (
-                                        <li className='bydate_day_item' key={index}>{item}</li>
+                                        <li className='bydate_day_item' key={index}><span>{item}</span></li>
                                     )
                                 }) : null
                         }
