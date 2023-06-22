@@ -98,6 +98,21 @@
                     height: 15vh;
                     border: 1px solid #DAD9D9;
                     border-collapse: collapse;
+                    position: relative;
+                    cursor: pointer;
+
+                    .bydate_day_item_content {
+                        position: absolute;
+                        bottom: 0;
+                        width: 100%;
+                        border-radius: 20px 0 0 0;
+                        background-color: aqua;
+
+                        .bydate_day_item_content_item {
+                            margin-top: 3px;
+
+                        }
+                    }
                 }
 
             }

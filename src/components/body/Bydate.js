@@ -1,8 +1,12 @@
 import '../../styles/body/bydate.scss';
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import moment from 'moment';
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
+import Tasksdetails from "./Tasksdetails";
+import { showTasksdetails } from "../../store/actions/ShowTasksdetails";
 const Bydate = () => {
+    const dispatch = useDispatch();
     const MyLifeRedux = useSelector(state => state.MyLifeRedux.MyLifeRedux);
     const WorkspaceRedux = useSelector(state => state.WorkspaceRedux.WorkspaceRedux);
     const title = useSelector(state => state.Page.Page);
@@ -52,6 +56,22 @@ const Bydate = () => {
         }
     }, [titleworkspace, WorkspaceRedux, MyLifeRedux]);
 
+    const clickdayitem = (item) => {
+        let data = checkday(item);
+        if (data.length > 0) {
+            dispatch(showTasksdetails(data[0]));
+        }
+        else {
+            alert('No tasks');
+        }
+    }
+    const checkday = (item) => {
+        let date = moment(`${item}/${month}/${year}`, 'DD/MM/YYYY').format('DD/MM/YYYY');
+        let mylifeandworkspace = [...WorkspaceRedux, ...MyLifeRedux];
+        let data1 = mylifeandworkspace.filter(item => moment(item.deadline, 'DD/MM/YYYY').format('DD/MM/YYYY') === date);
+        return data1
+    }
+
     useEffect(() => {
         let day_of_month = get_day_of_month(year, month);
         let Day_of_month = [];
@@ -62,41 +82,56 @@ const Bydate = () => {
     }, [month, year])
 
     return (
+        <>
+            <Tasksdetails />
+            <div className="bydate">
+                <div className='bydate_top'>
+                    <AiFillCaretLeft className='AiFillCaretLeft' onClick={() => clickleft()} />
+                    <span className='top_month'>{monthNames[month - 1]}</span>
+                    <span className='top_year'>{year}</span>
+                    <AiFillCaretRight className='AiFillCaretRight' onClick={() => clickright()} />
 
-        <div className="bydate">
-            <div className='bydate_top'>
-                <AiFillCaretLeft className='AiFillCaretLeft' onClick={() => clickleft()} />
-                <span className='top_month'>{monthNames[month - 1]}</span>
-                <span className='top_year'>{year}</span>
-                <AiFillCaretRight className='AiFillCaretRight' onClick={() => clickright()} />
-
-            </div>
-            <div className='bydate_content'>
-                <div className='bydate_weeks'>
-                    <ul className='weeks'>
-                        <li className='bydate_weeks_item'>Monday</li>
-                        <li className='bydate_weeks_item'>Tuesday</li>
-                        <li className='bydate_weeks_item'>Wednesday</li>
-                        <li className='bydate_weeks_item'>Thursday</li>
-                        <li className='bydate_weeks_item'>Friday</li>
-                        <li className='bydate_weeks_item'>Saturday</li>
-                        <li className='bydate_weeks_item'>Sunday</li>
-                    </ul>
                 </div>
-                <div className='bydate_days'>
-                    <ul className='days'>
-                        {
-                            (day && day.length > 0) ?
-                                day.map((item, index) => {
-                                    return (
-                                        <li className='bydate_day_item' key={index}><span>{item}</span></li>
-                                    )
-                                }) : null
-                        }
-                    </ul>
+                <div className='bydate_content'>
+                    <div className='bydate_weeks'>
+                        <ul className='weeks'>
+                            <li className='bydate_weeks_item'>Monday</li>
+                            <li className='bydate_weeks_item'>Tuesday</li>
+                            <li className='bydate_weeks_item'>Wednesday</li>
+                            <li className='bydate_weeks_item'>Thursday</li>
+                            <li className='bydate_weeks_item'>Friday</li>
+                            <li className='bydate_weeks_item'>Saturday</li>
+                            <li className='bydate_weeks_item'>Sunday</li>
+                        </ul>
+                    </div>
+                    <div className='bydate_days'>
+                        <ul className='days'>
+                            {
+                                (day && day.length > 0) ?
+                                    day.map((item, index) => {
+                                        return (
+                                            <li className='bydate_day_item' key={index} onClick={() => clickdayitem(item)}>
+                                                <span>{item}</span>
+                                                <div className='bydate_day_item_content'>
+                                                    {
+                                                        (checkday(item).length > 0) ? checkday(item).map((item1, index1) => {
+                                                            return (
+                                                                <div className='bydate_day_item_content_item' key={index1}>
+                                                                    {item1.task_name}
+                                                                </div>
+                                                            )
+                                                        }) : null
+                                                    }
+                                                </div>
+                                            </li>
+                                        )
+                                    }) : null
+                            }
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
 
     )
 }
