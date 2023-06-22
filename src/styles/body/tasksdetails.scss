@@ -1,0 +1,154 @@
+#taskdetail {
+    #taskdetail_header {
+        background-color: #FFFFFF;
+        margin-top: 5px;
+        border: 0;
+
+        .btn-close {
+            margin: 0 35px 0 0;
+            padding: 0;
+            font-size: 20px;
+        }
+
+        #taskdetail_title {
+            margin-left: 40px;
+            color: var(--primary-text, #363431);
+            font-size: 40px;
+            font-family: Inter;
+            font-weight: 600;
+        }
+    }
+
+    #taskdetail_body {
+        margin: 15px auto;
+        width: 90%;
+        padding: 0;
+
+        .taskdetail_status {
+            margin: 0;
+            padding: 0;
+            font-size: 17px;
+            font-family: Inter;
+            font-weight: 600;
+
+            .detail_text {
+                color: #ced4da;
+                width: 100px;
+                border: 1px solid #ced4da;
+                border-radius: 20px;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            #detail_text1 {
+                margin-right: 20px;
+                display: inline-block;
+            }
+
+
+            #detail_text2 {
+                margin-right: 20px;
+                display: inline-block;
+            }
+
+            #detail_text3 {
+                display: inline-block;
+            }
+        }
+
+        .taskdetail_data {
+            text-align: center;
+
+            #taskdetail_input_task_name {
+                border-radius: 10px;
+                width: 90%;
+                margin-top: 20px;
+                border: 0;
+                text-align: center;
+                font-size: 24px;
+                font-family: Inter;
+                font-weight: 600;
+                background-color: #FFFFFF;
+                color: #363431;
+            }
+
+            #taskdetail_input_description {
+                border-radius: 10px;
+                width: 90%;
+                margin: 0 0 20px 0;
+                border: 0;
+                text-align: center;
+                font-size: 20px;
+                font-family: Inter;
+                font-weight: 600;
+                background-color: #FFFFFF;
+            }
+
+            #deadline_text {
+                font-size: 20px;
+                font-family: Inter;
+                font-weight: 600;
+                color: rgb(233, 53, 53);
+            }
+
+            #deadline_date {
+                padding-left: 15px;
+                font-size: 20px;
+                font-family: Inter;
+                font-weight: 600;
+                color: rgb(233, 53, 53);
+            }
+
+            #taskdetail_input_deadline {
+                display: none;
+                border-radius: 10px;
+                width: 50%;
+                border: 0;
+                text-align: center;
+                font-size: 20px;
+                font-family: Inter;
+                font-weight: 600;
+                color: rgb(233, 53, 53);
+            }
+        }
+
+    }
+
+    #taskdetail_footer {
+        #taskdetail_footer_oke {
+            display: none;
+            position: absolute;
+            margin-right: 280px;
+            width: 80px;
+            background-color: rgb(33, 226, 43);
+            font-size: 19px;
+            font-weight: 600;
+        }
+
+        #taskdetail_footer_cancel {
+            display: none;
+            position: absolute;
+            margin-right: 170px;
+            width: 90px;
+            background-color: rgb(202, 199, 39);
+            font-size: 19px;
+            font-weight: 600;
+        }
+
+        #taskdetail_footer_edit {
+            margin-right: 20px;
+            width: 80px;
+            background-color: rgb(202, 199, 39);
+            font-size: 19px;
+            font-weight: 600;
+        }
+
+        #taskdetail_footer_delete {
+            margin-right: 10px;
+            width: 90px;
+            background-color: rgb(223, 45, 45);
+            font-size: 19px;
+            font-weight: 600;
+        }
+    }
+}

@@ -4,6 +4,8 @@ import { toast } from 'react-toastify';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { deleteTaskMylife } from '../../store/actions/MyLife_action';
 import { deleteTaskWorkspace } from '../../store/actions/Workspace_action';
+import { showTasksdetails } from "../../store/actions/ShowTasksdetails";
+import Tasksdetails from "./Tasksdetails";
 import '../../styles/body/alltasks.scss';
 import '../../styles/body/mytasks.scss';
 const Alltasks = () => {
@@ -35,6 +37,15 @@ const Alltasks = () => {
             setYear(year + 1);
         }
     }
+    const deleteTask = (task) => {
+        if (task.workspace === 'mylife') {
+            dispatch(deleteTaskMylife(task.id));
+        }
+        else {
+            dispatch(deleteTaskWorkspace(task.id));
+        }
+        toast.warning('Delete task successfully');
+    }
 
     useEffect(() => {
         if (title === 'mylife') {
@@ -52,21 +63,9 @@ const Alltasks = () => {
         }
     }, [titleworkspace, WorkspaceRedux, MyLifeRedux]);
 
-    const deleteTask = (task) => {
-        let size = Object.keys(task).length;
-        if (size === 5) {
-            dispatch(deleteTaskMylife(task.task_name));
-        }
-        else {
-            if (size === 6) {
-                dispatch(deleteTaskWorkspace(task.task_name));
-            }
-        }
-        toast.success('Delete task successfully');
-    }
-
     return (
         <>
+            <Tasksdetails />
             <div className="mytasks">
                 <div className='date'>
                     <FaAngleLeft className='icon_left' onClick={() => clickleft()} />
@@ -79,7 +78,7 @@ const Alltasks = () => {
                         data && data.length > 0 && data.map((item, index) => {
                             if (item.status === 'Completed') {
                                 return (
-                                    <div key={index} className='mytasks_container_item' id='Completed_mytasks'>
+                                    <div key={index} className='mytasks_container_item' id='Completed_mytasks' onClick={() => dispatch(showTasksdetails(item))}>
                                         <span className="deadline_mytasks" id='Completed_deadline'>{item.deadline}</span>
                                         <span className="tasksname_mytasks">{item.task_name}</span>
                                         <button className="btn_mytasks" onClick={() => deleteTask(item)}>Delete</button>
@@ -88,7 +87,7 @@ const Alltasks = () => {
                             } else {
                                 if (item.status === 'UnComplete') {
                                     return (
-                                        <div key={index} className='mytasks_container_item' id='UnComplete_mytasks'>
+                                        <div key={index} className='mytasks_container_item' id='UnComplete_mytasks' onClick={() => dispatch(showTasksdetails(item))}>
                                             <span className="deadline_mytasks" id='UnComplete_deadline'>{item.deadline}</span>
                                             <span className="tasksname_mytasks">{item.task_name}</span>
                                             <button className="btn_mytasks" onClick={() => deleteTask(item)}>Delete</button>
@@ -97,7 +96,7 @@ const Alltasks = () => {
                                 }
                                 else {
                                     return (
-                                        <div key={index} className='mytasks_container_item' id='Stopped_mytasks'>
+                                        <div key={index} className='mytasks_container_item' id='Stopped_mytasks' onClick={() => dispatch(showTasksdetails(item))}>
                                             <span className="deadline_mytasks" id='Stopped_deadline'>{item.deadline}</span>
                                             <span className="tasksname_mytasks">{item.task_name}</span>
                                             <button className="btn_mytasks" onClick={() => deleteTask(item)}>Delete</button>

@@ -1,8 +1,11 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import '../../styles/body/bystatus.scss'
+import Tasksdetails from "./Tasksdetails";
+import { showTasksdetails } from "../../store/actions/ShowTasksdetails";
 const Bystatus = () => {
+    const dispatch = useDispatch();
     const MyLifeRedux = useSelector(state => state.MyLifeRedux.MyLifeRedux);
     const WorkspaceRedux = useSelector(state => state.WorkspaceRedux.WorkspaceRedux);
     const title = useSelector(state => state.Page.Page);
@@ -60,6 +63,7 @@ const Bystatus = () => {
 
     return (
         <>
+            <Tasksdetails />
             <div className="bystatus">
                 <div className='date'>
                     <FaAngleLeft className='icon_left' onClick={() => clickleft()} />
@@ -74,7 +78,7 @@ const Bystatus = () => {
                             {
                                 UnComplete && UnComplete.length > 0 && UnComplete.map((item, index) => {
                                     return (
-                                        <div key={index} className='category_colum_item'>
+                                        <div key={index} className='category_colum_item' onClick={() => dispatch(showTasksdetails(item))}>
                                             <span>{item.task_name}</span>
                                         </div>
                                     )
@@ -88,7 +92,7 @@ const Bystatus = () => {
                             {
                                 Completed && Completed.length > 0 && Completed.map((item, index) => {
                                     return (
-                                        <div key={index} className='category_colum_item'>
+                                        <div key={index} className='category_colum_item' onClick={() => dispatch(showTasksdetails(item))}>
                                             <span>{item.task_name}</span>
                                         </div>
                                     )
@@ -102,7 +106,7 @@ const Bystatus = () => {
                             {
                                 Stopped && Stopped.length > 0 && Stopped.map((item, index) => {
                                     return (
-                                        <div key={index} className='category_colum_item'>
+                                        <div key={index} className='category_colum_item' onClick={() => dispatch(showTasksdetails(item))}>
                                             <span>{item.task_name}</span>
                                         </div>
                                     )

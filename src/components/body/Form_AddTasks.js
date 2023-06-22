@@ -8,7 +8,8 @@ import { addTaskMylife } from '../../store/actions/MyLife_action';
 import { addTaskWorkspace } from '../../store/actions/Workspace_action';
 import '../../styles/body/form_addtasks.scss'
 
-function Example() {
+const Example = () => {
+    const [Id, setId] = useState(0);
     const [Task_name, setTask_name] = useState("");
     const [Description, setDescription] = useState("");
     const [Deadline, setDeadline] = useState('');
@@ -18,8 +19,9 @@ function Example() {
     const Workspaces = useSelector(state => state.WorkspaceRedux.Workspaces);
     const show = useSelector(state => state.ShowForm_AddTasks.show);
     const Page = useSelector(state => state.Page.Page);
+    const mylife_size = useSelector(state => state.MyLifeRedux.MyLifeRedux).length;
+    const workspace_size = useSelector(state => state.WorkspaceRedux.WorkspaceRedux).length;
     const [Page_calendar, setPage_calendar] = useState('');
-    const [show_calendar, setShow_calendar] = useState(false);
     const [workspace_name, setWorkspace_name] = useState('');
     const dispatch = useDispatch();
 
@@ -55,13 +57,15 @@ function Example() {
             return;
         }
         if (Page === 'mylife' || (Page === 'calendar' && Page_calendar === 'mylife')) {
-            let Task = { task_name: Task_name, description: Description, deadline: Deadline, status: Status, member: Member };
+            setId(mylife_size + 1);
+            let Task = { id: Id, workspace: "mylife", task_name: Task_name, description: Description, deadline: Deadline, status: Status, member: Member };
             dispatch(addTaskMylife(Task));
             dispatch(closeAddTasks());
         }
         else {
             if (Page === 'workspace' || (Page === 'calendar' && Page_calendar === 'workspace')) {
-                let Task = { workspace: workspace_name, task_name: Task_name, description: Description, deadline: Deadline, status: Status, member: Member };
+                setId(workspace_size + 1);
+                let Task = { id: Id, workspace: workspace_name, task_name: Task_name, description: Description, deadline: Deadline, status: Status, member: Member };
                 dispatch(addTaskWorkspace(Task));
                 dispatch(closeAddTasks());
             }

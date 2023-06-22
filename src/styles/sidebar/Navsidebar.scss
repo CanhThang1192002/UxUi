@@ -241,7 +241,6 @@
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
-    ;
 }
 
 .formaddworkspace {
@@ -251,24 +250,15 @@
     .modal-content {
         width: 300px;
         border-radius: 24px;
-        // height: 350px;
         margin-bottom: 80px;
 
-        .header {
-            background-color: rgb(97, 119, 194);
-            border: 0;
-            text-align: center;
-            height: 45px;
-            line-height: 45px;
-
-            span {
-                color: white;
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 600;
-                font-size: 18px;
-                margin-left: 60px;
-            }
+        #formaddworkspace_header {
+            color: white;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 23px;
+            margin: auto;
         }
     }
 

@@ -2,6 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { toast } from 'react-toastify';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import Tasksdetails from "./Tasksdetails";
+import { showTasksdetails } from "../../store/actions/ShowTasksdetails";
 import { deleteTaskMylife } from '../../store/actions/MyLife_action';
 import { deleteTaskWorkspace } from '../../store/actions/Workspace_action';
 import '../../styles/body/mytasks.scss';
@@ -59,20 +61,18 @@ const Mytasks = () => {
     }, [data]);
 
     const deleteTask = (task) => {
-        let size = Object.keys(task).length;
-        if (size === 5) {
-            dispatch(deleteTaskMylife(task.task_name));
+        if (task.workspace === 'mylife') {
+            dispatch(deleteTaskMylife(task.id));
         }
         else {
-            if (size === 6) {
-                dispatch(deleteTaskWorkspace(task.task_name));
-            }
+            dispatch(deleteTaskWorkspace(task.id));
         }
-        toast.success('Delete task successfully');
+        toast.warning('Delete task successfully');
     }
 
     return (
         <>
+            <Tasksdetails />
             <div className="mytasks">
                 <div className='date'>
                     <FaAngleLeft className='icon_left' onClick={() => clickleft()} />
@@ -85,7 +85,7 @@ const Mytasks = () => {
                         data_mytasks && data_mytasks.length > 0 && data_mytasks.map((item, index) => {
                             if (item.status === 'Completed') {
                                 return (
-                                    <div key={index} className='mytasks_container_item' id='Completed_mytasks'>
+                                    <div key={index} className='mytasks_container_item' id='Completed_mytasks' onClick={() => dispatch(showTasksdetails(item))}>
                                         <span className="deadline_mytasks" id='Completed_deadline'>{item.deadline}</span>
                                         <span className="tasksname_mytasks">{item.task_name}</span>
                                         <button className="btn_mytasks" onClick={() => deleteTask(item)}>Delete</button>
@@ -94,7 +94,7 @@ const Mytasks = () => {
                             } else {
                                 if (item.status === 'UnComplete') {
                                     return (
-                                        <div key={index} className='mytasks_container_item' id='UnComplete_mytasks'>
+                                        <div key={index} className='mytasks_container_item' id='UnComplete_mytasks' onClick={() => dispatch(showTasksdetails(item))}>
                                             <span className="deadline_mytasks" id='UnComplete_deadline'>{item.deadline}</span>
                                             <span className="tasksname_mytasks">{item.task_name}</span>
                                             <button className="btn_mytasks" onClick={() => deleteTask(item)}>Delete</button>
@@ -103,7 +103,7 @@ const Mytasks = () => {
                                 }
                                 else {
                                     return (
-                                        <div key={index} className='mytasks_container_item' id='Stopped_mytasks'>
+                                        <div key={index} className='mytasks_container_item' id='Stopped_mytasks' onClick={() => dispatch(showTasksdetails(item))}>
                                             <span className="deadline_mytasks" id='Stopped_deadline'>{item.deadline}</span>
                                             <span className="tasksname_mytasks">{item.task_name}</span>
                                             <button className="btn_mytasks" onClick={() => deleteTask(item)}>Delete</button>

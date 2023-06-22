@@ -50,12 +50,13 @@ const Navsidebar = () => {
     }
     const deleteWorkspaceName = (item) => {
         dispatch(deleteWorkspace(item.Workspaces_name))
+        toast.warning('Delete workspace successfully');
     }
 
     return (
         <>
             <Modal className="formaddworkspace" show={show}>
-                <Modal.Header className="header"><span className="header">Add Workspace</span></Modal.Header>
+                <Modal.Header ><span id="formaddworkspace_header">Add Workspace</span></Modal.Header>
                 <Modal.Body>
                     <input className="input_sub_pro" placeholder="subject or project" value={workspace.Workspaces_type} onClick={() => document.getElementById("sub_pro").style.display = "block"}></input>
                     <div id="sub_pro" style={{ display: "none" }}>

@@ -1,8 +1,8 @@
 const initState = {
     WorkspaceRedux: [
-        { workspace: "OOP", task_name: "Complete week 1 s assignment.", description: " Work with Maria, John and Mia to solve the assignment of week 4, and create a repository for ex.", deadline: "04/10/2023", status: "Stopped", member: 1 },
-        { workspace: "OOP", task_name: "Complete week 2 s assignment.", description: " Work with Maria, John and Mia to solve the assignment of week 4, and create a repository for ex.", deadline: "14/10/2023", status: "Completed", member: 3 },
-        { workspace: "OOP", task_name: "Complete week 3 s assignment.", description: " Work with Maria, John and Mia to solve the assignment of week 4, and create a repository for ex.", deadline: "15/9/2023", status: "UnComplete", member: 1 },
+        { id: 1, workspace: "OOP", task_name: "Complete week 1 s assignment.", description: " Work with Maria, John and Mia to solve the assignment of week 4, and create a repository for ex.", deadline: "04/10/2023", status: "Stopped", member: 1 },
+        { id: 2, workspace: "OOP", task_name: "Complete week 2 s assignment.", description: " Work with Maria, John and Mia to solve the assignment of week 4, and create a repository for ex.", deadline: "14/10/2023", status: "Completed", member: 3 },
+        { id: 3, workspace: "OOP", task_name: "Complete week 3 s assignment.", description: " Work with Maria, John and Mia to solve the assignment of week 4, and create a repository for ex.", deadline: "15/9/2023", status: "UnComplete", member: 1 },
     ],
     Workspaces: [
         { Workspaces_name: "OOP", Workspaces_type: "subject" },
@@ -17,11 +17,17 @@ const WorkspaceRedux = (state = initState, action) => {
                 ...state, WorkspaceRedux: [...state.WorkspaceRedux, action.payload]
             }
         case 'EDIT_TASK_WORKSPACE':
+            let newWorkspaceRedux1 = state.WorkspaceRedux.map((item, index) => {
+                if (item.id === action.payload.id) {
+                    return action.payload;
+                }
+                return item;
+            })
             return {
-                state
+                ...state, WorkspaceRedux: newWorkspaceRedux1
             }
         case 'DELETE_TASK_WORKSPACE':
-            let newWorkspaceRedux = state.WorkspaceRedux.filter((item, index) => item.task_name !== action.payload);
+            let newWorkspaceRedux = state.WorkspaceRedux.filter((item, index) => item.id !== action.payload);
             return {
                 ...state, WorkspaceRedux: newWorkspaceRedux
             }

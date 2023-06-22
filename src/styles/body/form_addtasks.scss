@@ -17,7 +17,7 @@
 .modal-content {
     position: fixed;
     top: 30px;
-    width: 350px;
+    width: 400px;
     // height: 530px;
     border-radius: 24px;
     margin-left: 80px;
@@ -69,6 +69,11 @@
             background-color: rgb(226, 223, 223);
             border-radius: 15px;
 
+        }
+
+        #workspace_name {
+            max-height: 100px;
+            overflow-y: auto;
         }
 
         .mylifename {
