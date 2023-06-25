@@ -1,10 +1,13 @@
 import '../../styles/body/bydate.scss';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import moment from 'moment';
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import Tasksdetails from "./Tasksdetails";
 import { showTasksdetails } from "../../store/actions/ShowTasksdetails";
+import { showAddTasks } from "../../store/actions/ShowForm_AddTasks";
 const Bydate = () => {
     const dispatch = useDispatch();
     const MyLifeRedux = useSelector(state => state.MyLifeRedux.MyLifeRedux);
@@ -18,6 +21,7 @@ const Bydate = () => {
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
+    const [show, setShow] = useState(false);
 
     const clickleft = () => {
         if (month > 1)
@@ -58,12 +62,17 @@ const Bydate = () => {
 
     const clickdayitem = (item) => {
         let data = checkday(item);
+        // let date = moment(`${item}/${month}/${year}`, 'DD/MM/YYYY').format('DD/MM/YYYY');
         if (data.length > 0) {
             dispatch(showTasksdetails(data[0]));
         }
         else {
-            alert('No tasks');
+            setShow(true);
         }
+    }
+    const clickcreateatask = () => {
+        dispatch(showAddTasks());
+        setShow(false);
     }
     const checkday = (item) => {
         let date = moment(`${item}/${month}/${year}`, 'DD/MM/YYYY').format('DD/MM/YYYY');
@@ -83,6 +92,20 @@ const Bydate = () => {
 
     return (
         <>
+            <Modal id='bydate_modal' show={show} onHide={() => setShow(false)}>
+                <Modal.Header id='bydate_header' closeButton>
+                    <Modal.Title id='bydate_title'>No Task</Modal.Title>
+                </Modal.Header>
+                <Modal.Body id='bydate_body'>
+                    <Button onClick={() => clickcreateatask()}>Create a task</Button>
+                </Modal.Body >
+                <Modal.Footer id='bydate_footer'>
+                    <Button id="bydate_close" onClick={() => setShow(false)}>
+                        CLOSE
+                    </Button>
+                </Modal.Footer>
+            </Modal >
+            {/* <Form_AddTasks /> */}
             <Tasksdetails />
             <div className="bydate">
                 <div className='bydate_top'>

@@ -1,5 +1,5 @@
 import {
-    NavLink
+    NavLink, Outlet
 } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -78,11 +78,11 @@ const Navsidebar = () => {
                     logo
                 </div>
                 <div className="nav_favourite">
-                    <NavLink className="navfavourite" to="/favourite">Favourite</NavLink>
+                    <NavLink className="navfavourite" to="/home">Favourite</NavLink>
                     <AiFillStar className="icon_favourite" />
                 </div>
                 <div className="nav_workspace">
-                    <span className="workspace_title">Workspace</span>
+                    <span className="workspace_title">Workspace</span>s
                     <AiOutlinePlus className="AiOutlinePlus" onClick={() => ShowAddWorkspace()} />
                     <div className="workspace_list">
                         {
@@ -91,7 +91,7 @@ const Navsidebar = () => {
                                     return (
                                         <div className="workspace_item" key={index}>
                                             <img className="icon" src={iconSubject} />
-                                            <NavLink className="nav_workspace_item" to="/workspace" onClick={() => click_workspace_name(item)}>{item.Workspaces_name}</NavLink>
+                                            <NavLink className="nav_workspace_item" to="/home/workspace" onClick={() => click_workspace_name(item)}>{item.Workspaces_name}</NavLink>
                                             <TiDelete className="TiDelete" onClick={() => deleteWorkspaceName(item)} />
                                         </div>
                                     )
@@ -100,7 +100,7 @@ const Navsidebar = () => {
                                     return (
                                         <div className="workspace_item" key={index}>
                                             <img className="icon" src={iconProject} />
-                                            <NavLink className="nav_workspace_item" to="/workspace" onClick={() => click_workspace_name(item)}>{item.Workspaces_name}</NavLink>
+                                            <NavLink className="nav_workspace_item" to="/home/workspace" onClick={() => click_workspace_name(item)}>{item.Workspaces_name}</NavLink>
                                             <TiDelete className="TiDelete" onClick={() => deleteWorkspaceName(item)} />
                                         </div>
                                     )
@@ -110,30 +110,30 @@ const Navsidebar = () => {
                     </div>
                 </div>
                 <div className="nav_calendar" onClick={() => dispatch(setpage('calendar'))}>
-                    <NavLink className="navcalendar" to="/">Calendar</NavLink>
+                    <NavLink className="navcalendar" to="/home/calendar">Calendar</NavLink>
                     <AiFillCalendar className="AiFillCalendar" />
 
                 </div>
                 <div className="nav_mylife" onClick={() => dispatch(setpage('mylife'))}>
-                    <NavLink className="navmylife" to="/mylife">Mylife</NavLink>
+                    <NavLink className="navmylife" to="/home/mylife">Mylife</NavLink>
                     <AiFillClockCircle className="AiFillClockCircle" />
 
                 </div>
                 <div className="setting_notice">
                     <div className="nav_help">
-                        <NavLink to="/help">
+                        <NavLink to="/home/help">
                             <MdHelp className="icon" />
                             <span className="navhelp">Help</span>
                         </NavLink>
                     </div>
                     <div className="nav_notice">
-                        <NavLink to="/notice">
+                        <NavLink to="/home/notice">
                             <AiFillBell className="icon" />
                             <span className="navnotice">Notice</span>
                         </NavLink>
                     </div>
                     <div className="nav_setting">
-                        <NavLink to="/setting">
+                        <NavLink to="/home/setting">
                             <AiFillSetting className="icon" />
                             <span className="navsetting">Setting</span>
                         </NavLink>

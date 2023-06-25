@@ -3,6 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
+import moment from 'moment';
 import { closeAddTasks } from "../../store/actions/ShowForm_AddTasks";
 import { addTaskMylife } from '../../store/actions/MyLife_action';
 import { addTaskWorkspace } from '../../store/actions/Workspace_action';
@@ -36,7 +37,7 @@ const Example = () => {
         setDescription(e.target.value);
     }
     const inputdate = (e) => {
-        setDeadline(e.target.value);
+        setDeadline(moment(e.target.value).format('DD/MM/YYYY'));
     }
     const clickWorkspace = () => {
         setPage_calendar('workspace');

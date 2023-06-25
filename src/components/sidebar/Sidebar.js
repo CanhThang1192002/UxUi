@@ -1,28 +1,18 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 import Navsidebar from "./Navsidebar";
-import Favourite from "./config/Favourite";
-import Setting from "./config/Setting";
-import Notice from "./config/Notice";
-import Help from "./config/Help";
-import Calendar from "./calendar/Calendar";
-import Mylife from "./mylife/Mylife";
-import Bystatus from "../body/Bystatus";
-import Mytasks from "../body/Mytasks";
-import Alltasks from "../body/Alltasks";
-import Bydate from "../body/Bydate";
-import Workspace from "./workspace/Workspace";
 
 const Sidebar = () => {
     return (
         <>
             <Navsidebar />
-            <Routes>
-                {/* <Route path="/" element={<Navsidebar />} > */}
-                <Route path="/favourite" element={<Favourite />} />
+            <Outlet />
+            {/* <Routes> */}
+            {/* <Route path="/" element={<Navsidebar />} /> */}
+            {/* <Route path="/favourite" element={<Favourite />} />
                 <Route path="/setting" element={<Setting />} />
                 <Route path="/notice" element={<Notice />} />
                 <Route path="/help" element={<Help />} />
-                <Route path="/" element={<Calendar />} >
+                <Route path="/calendar" element={<Calendar />} >
                     <Route index element={<Bystatus />} />
                     <Route path="bystatus" element={<Bystatus />} />
                     <Route path="mytasks" element={<Mytasks />} />
@@ -42,10 +32,9 @@ const Sidebar = () => {
                     <Route path="mytasks" element={<Mytasks />} />
                     <Route path="alltasks" element={<Alltasks />} />
                     <Route path="bydate" element={<Bydate />} />
-                </Route>
-                {/* </Route> */}
+                </Route> */}
 
-            </Routes>
+            {/* </Routes> */}
 
 
         </>
