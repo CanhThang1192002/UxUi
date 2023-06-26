@@ -1,6 +1,6 @@
 import React from 'react';
-import '../../styles/login/login.scss'
-import { useNavigate } from 'react-router-dom';
+import '../../styles/login/signin.scss'
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
@@ -14,19 +14,23 @@ import {
 } from 'mdb-react-ui-kit';
 import { toast } from 'react-toastify';
 
-function Login() {
+function Signin() {
     const login = useSelector(state => state.Login.Login);
     const navigate = useNavigate();
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
-    const signin = () => {
+    const licklogin = () => {
+        if (Email === "" || Password === "") {
+            toast.error("Please enter Email and Password");
+            return;
+        }
         let user = login.find((item) => item.username === Email);
         if (user.length === 0) {
             toast.error("Email is incorrect");
             return;
         } else {
             if (user.password === Password) {
-                toast.success("Login successfully");
+                // toast.success("Signin successfully");
                 navigate('/home');
             } else {
                 toast.error("Password is incorrect");
@@ -55,7 +59,7 @@ function Login() {
                         <a href="!#">Forgot password?</a>
                     </div>
 
-                    <MDBBtn className="mb-4 w-100" size="lg" onClick={() => signin()}>Sign in</MDBBtn>
+                    <MDBBtn className="mb-4 w-100" size="lg" onClick={() => licklogin()}>Sign in</MDBBtn>
 
                     <div className="divider d-flex align-items-center my-4">
                         <p className="text-center fw-bold mx-3 mb-0">OR</p>
@@ -70,6 +74,11 @@ function Login() {
                         <MDBIcon fab icon="twitter" className="mx-2" />
                         Continue with twitter
                     </MDBBtn>
+                    <div style={{ textAlign: 'center', fontSize: "20px" }}>
+                        <span>Don't have an account?</span> &nbsp; &nbsp;
+                        <NavLink to="/signup">Sign Up</NavLink>
+                    </div>
+
 
                 </MDBCol>
 
@@ -79,4 +88,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Signin;

@@ -1,7 +1,8 @@
 #taskdetail {
     #taskdetail_header {
         background-color: #FFFFFF;
-        margin-top: 5px;
+        margin-top: 20px;
+        margin-bottom: 15px;
         border: 0;
 
         .btn-close {
@@ -16,6 +17,22 @@
             font-size: 40px;
             font-family: Inter;
             font-weight: 600;
+        }
+
+        #AiOutlineStar {
+            position: relative;
+            left: -40px;
+            top: 8px;
+            color: rgb(255, 251, 0);
+            font-size: 35px;
+        }
+
+        #AiFillStar {
+            position: relative;
+            left: -75px;
+            top: 8px;
+            color: rgb(255, 251, 0);
+            font-size: 35px;
         }
     }
 

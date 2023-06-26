@@ -82,7 +82,7 @@ const Navsidebar = () => {
                     <AiFillStar className="icon_favourite" />
                 </div>
                 <div className="nav_workspace">
-                    <span className="workspace_title">Workspace</span>s
+                    <span className="workspace_title">Workspace</span>
                     <AiOutlinePlus className="AiOutlinePlus" onClick={() => ShowAddWorkspace()} />
                     <div className="workspace_list">
                         {

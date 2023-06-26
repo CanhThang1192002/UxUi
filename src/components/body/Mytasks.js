@@ -85,27 +85,27 @@ const Mytasks = () => {
                         data_mytasks && data_mytasks.length > 0 && data_mytasks.map((item, index) => {
                             if (item.status === 'Completed') {
                                 return (
-                                    <div key={index} className='mytasks_container_item' id='Completed_mytasks' onClick={() => dispatch(showTasksdetails(item))}>
-                                        <span className="deadline_mytasks" id='Completed_deadline'>{item.deadline}</span>
-                                        <span className="tasksname_mytasks">{item.task_name}</span>
+                                    <div key={index} className='mytasks_container_item' id='Completed_mytasks'  >
+                                        <span className="deadline_mytasks" id='Completed_deadline' onClick={() => dispatch(showTasksdetails(item))}>{item.deadline}</span>
+                                        <span className="tasksname_mytasks" onClick={() => dispatch(showTasksdetails(item))}>{item.task_name}</span>
                                         <button className="btn_mytasks" onClick={() => deleteTask(item)}>Delete</button>
                                     </div>
                                 )
                             } else {
                                 if (item.status === 'UnComplete') {
                                     return (
-                                        <div key={index} className='mytasks_container_item' id='UnComplete_mytasks' onClick={() => dispatch(showTasksdetails(item))}>
-                                            <span className="deadline_mytasks" id='UnComplete_deadline'>{item.deadline}</span>
-                                            <span className="tasksname_mytasks">{item.task_name}</span>
+                                        <div key={index} className='mytasks_container_item' id='UnComplete_mytasks'  >
+                                            <span className="deadline_mytasks" id='UnComplete_deadline' onClick={() => dispatch(showTasksdetails(item))}>{item.deadline}</span>
+                                            <span className="tasksname_mytasks" onClick={() => dispatch(showTasksdetails(item))}>{item.task_name}</span>
                                             <button className="btn_mytasks" onClick={() => deleteTask(item)}>Delete</button>
                                         </div>
                                     )
                                 }
                                 else {
                                     return (
-                                        <div key={index} className='mytasks_container_item' id='Stopped_mytasks' onClick={() => dispatch(showTasksdetails(item))}>
-                                            <span className="deadline_mytasks" id='Stopped_deadline'>{item.deadline}</span>
-                                            <span className="tasksname_mytasks">{item.task_name}</span>
+                                        <div key={index} className='mytasks_container_item' id='Stopped_mytasks'  >
+                                            <span className="deadline_mytasks" id='Stopped_deadline' onClick={() => dispatch(showTasksdetails(item))}>{item.deadline}</span>
+                                            <span className="tasksname_mytasks" onClick={() => dispatch(showTasksdetails(item))}>{item.task_name}</span>
                                             <button className="btn_mytasks" onClick={() => deleteTask(item)}>Delete</button>
                                         </div>
                                     )

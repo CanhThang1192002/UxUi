@@ -87,7 +87,7 @@
         }
 
         .bydate_days {
-            height: 350px;
+            height: 360px;
             overflow-y: scroll;
 
             .days {
@@ -116,6 +116,27 @@
                 }
 
             }
+        }
+    }
+}
+
+#bydate_modal {
+    #bydate_header {
+        .btn-close {
+            margin: 0 30px 0 0;
+            font-size: 20px;
+        }
+    }
+
+    #bydate_body {
+        margin: auto;
+
+        #bydate_body_createtasks {
+            font-size: 18px;
+            font-weight: 600;
+            font-family: 'Inter';
+            background-color: rgb(43, 255, 0);
+            color: black;
         }
     }
 }

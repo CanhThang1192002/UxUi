@@ -1,8 +1,151 @@
+%textStyle {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #363431;
+}
+
 .favoutite {
     // border: 1px solid #cccccc;
-    height: 100vh;
+    // height: 100vh;
     width: 75%;
     margin-left: 22.5%;
+    margin-top: 15px;
     position: absolute;
     top: 0;
+
+    .favoutite_body {
+        margin-top: 20px;
+        width: 100%;
+
+        .favoutite_container {
+            width: 46%;
+            text-align: center;
+
+            #favoutite_title {
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 35px;
+                line-height: 40px;
+                color: #363431;
+                border-bottom: 2px solid #6e6c69;
+                border-radius: 30px;
+                padding: 10px;
+                z-index: 1 !important;
+            }
+
+            .favoutite_data {
+                // background-color: rgb(243, 241, 237);
+                height: 470px;
+                overflow-y: auto;
+                position: relative;
+                // top: -25px;
+                // border-left: 1px solid #7c7a77;
+                // border-right: 1px solid #7c7a77;
+
+                .mytasks_container_item {
+                    margin-top: 2vh;
+                    height: 9vh;
+                    width: 100%;
+                    border-radius: 25px;
+                    @extend %textStyle;
+
+                    .deadline_mytasks {
+                        float: left;
+                        width: 20%;
+                        height: 9vh;
+                        line-height: 9vh;
+                        border-radius: 25px 0 0 25px;
+                        font-size: 15px;
+                    }
+
+                    .tasksname_mytasks {
+                        width: 80%;
+                        height: 9vh;
+                        line-height: 9vh;
+                        border-radius: 0 25px 25px 0;
+                    }
+
+                    .btn_mytasks {
+                        border: 0;
+                        float: right;
+                        margin-right: 10px;
+                        height: 35px;
+                        margin-top: 2vh;
+                        width: 65px;
+                        border-radius: 25px;
+                    }
+
+                }
+
+            }
+        }
+
+        .myday_container {
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            width: 46%;
+            text-align: center;
+
+            #myday_title {
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 35px;
+                line-height: 40px;
+                color: #363431;
+                border-bottom: 2px solid #6e6c69;
+                border-radius: 30px;
+                padding: 10px;
+            }
+
+            .myday_data {
+                // background-color: rgb(243, 241, 237);
+                height: 470px;
+                overflow-y: auto;
+                position: relative;
+
+                // top: -25px;
+                // border-left: 1px solid #7c7a77;
+                // border-right: 1px solid #7c7a77;
+                .mytasks_container_item {
+                    margin-top: 2vh;
+                    height: 9vh;
+                    width: 100%;
+                    border-radius: 25px;
+                    @extend %textStyle;
+
+                    .deadline_mytasks {
+                        float: left;
+                        width: 20%;
+                        height: 9vh;
+                        line-height: 9vh;
+                        border-radius: 25px 0 0 25px;
+                        font-size: 15px;
+                    }
+
+                    .tasksname_mytasks {
+                        width: 80%;
+                        height: 9vh;
+                        line-height: 9vh;
+                        border-radius: 0 25px 25px 0;
+                    }
+
+                    .btn_mytasks {
+                        border: 0;
+                        margin-right: 10px;
+                        height: 35px;
+                        margin-top: 2vh;
+                        width: 65px;
+                        border-radius: 25px;
+                    }
+
+                }
+            }
+        }
+    }
 }

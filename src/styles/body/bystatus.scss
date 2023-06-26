@@ -55,7 +55,7 @@
 
             .UnComplete_data {
                 overflow-y: auto;
-                height: 300px;
+                height: 333px;
                 margin-top: 10px;
 
                 .category_colum_item {
@@ -63,8 +63,9 @@
                     margin-top: 1vh;
                     border-radius: 10px;
                     min-height: 10vh;
-                    background-color: #DAD9D9;
+                    background-color: #ff624e;
                     @extend %textStyle;
+                    padding: 4px;
                 }
             }
         }
@@ -82,7 +83,7 @@
 
             .Completed_data {
                 overflow-y: auto;
-                height: 300px;
+                height: 333px;
                 margin-top: 10px;
 
                 .category_colum_item {
@@ -90,8 +91,9 @@
                     margin-top: 1vh;
                     border-radius: 10px;
                     min-height: 10vh;
-                    background-color: #DAD9D9;
+                    background-color: #7085bb;
                     @extend %textStyle;
+                    padding: 4px;
                 }
             }
         }
@@ -110,7 +112,7 @@
 
             .Stopped_data {
                 overflow-y: auto;
-                height: 300px;
+                height: 333px;
                 margin-top: 10px;
 
                 .category_colum_item {
@@ -118,8 +120,9 @@
                     margin-top: 1vh;
                     border-radius: 10px;
                     min-height: 10vh;
-                    background-color: #DAD9D9;
+                    background-color: #e9cd79;
                     @extend %textStyle;
+                    padding: 4px;
                 }
             }
         }

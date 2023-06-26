@@ -1,6 +1,6 @@
 const initialState = {
     show: false,
-    data: { id: 0, workspace: "", task_name: "", description: " ", deadline: "", status: "", member: 1 }
+    data: { id: 0, workspace: "", task_name: "", description: " ", deadline: "", status: "", member: 1, favoutite: false }
 }
 const ShowTasksdetails = (state = initialState, action) => {
     switch (action.type) {

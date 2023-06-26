@@ -3,8 +3,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.scss';
 import { Routes, Route } from "react-router-dom";
 import Sidebar from './components/sidebar/Sidebar';
-import Login from './components/login/Login';
-import Navsidebar from "./components/sidebar/Navsidebar";
+import Signin from './components/login/Signin';
+import Signup from './components/login/Signup';
 import Favourite from "./components/sidebar/config/Favourite";
 import Setting from "./components/sidebar/config/Setting";
 import Notice from "./components/sidebar/config/Notice";
@@ -21,7 +21,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Signin />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/home" element={<Sidebar />} >
             <Route index element={<Favourite />} />
             <Route path="calendar" element={<Calendar />} >

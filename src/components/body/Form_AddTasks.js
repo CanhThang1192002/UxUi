@@ -16,6 +16,7 @@ const Example = () => {
     const [Deadline, setDeadline] = useState('');
     const [Status, setStatus] = useState("UnComplete");
     const [Member, setMember] = useState(1);
+    const [Favourite, setFavourite] = useState(false);
 
     const Workspaces = useSelector(state => state.WorkspaceRedux.Workspaces);
     const show = useSelector(state => state.ShowForm_AddTasks.show);
@@ -37,7 +38,7 @@ const Example = () => {
         setDescription(e.target.value);
     }
     const inputdate = (e) => {
-        setDeadline(moment(e.target.value).format('DD/MM/YYYY'));
+        setDeadline(e.target.value);
     }
     const clickWorkspace = () => {
         setPage_calendar('workspace');
@@ -59,14 +60,14 @@ const Example = () => {
         }
         if (Page === 'mylife' || (Page === 'calendar' && Page_calendar === 'mylife')) {
             setId(mylife_size + 1);
-            let Task = { id: Id, workspace: "mylife", task_name: Task_name, description: Description, deadline: Deadline, status: Status, member: Member };
+            let Task = { id: Id, workspace: "mylife", task_name: Task_name, description: Description, deadline: moment(Deadline).format('DD/MM/YYYY'), status: Status, member: Member, favoutite: Favourite };
             dispatch(addTaskMylife(Task));
             dispatch(closeAddTasks());
         }
         else {
             if (Page === 'workspace' || (Page === 'calendar' && Page_calendar === 'workspace')) {
                 setId(workspace_size + 1);
-                let Task = { id: Id, workspace: workspace_name, task_name: Task_name, description: Description, deadline: Deadline, status: Status, member: Member };
+                let Task = { id: Id, workspace: workspace_name, task_name: Task_name, description: Description, deadline: moment(Deadline).format('DD/MM/YYYY'), status: Status, member: Member };
                 dispatch(addTaskWorkspace(Task));
                 dispatch(closeAddTasks());
             }

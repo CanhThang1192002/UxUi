@@ -7,6 +7,7 @@ import { deleteTaskMylife, editTaskMylife } from '../../store/actions/MyLife_act
 import { deleteTaskWorkspace, editTaskWorkspace } from '../../store/actions/Workspace_action';
 import { closeTasksdetails } from "../../store/actions/ShowTasksdetails";
 import '../../styles/body/tasksdetails.scss'
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 const Tasksdetails = () => {
     const dispatch = useDispatch();
     const show = useSelector(state => state.ShowTasksdetails.show);
@@ -15,6 +16,7 @@ const Tasksdetails = () => {
     const [TaskName, setTaskName] = useState("data.taskname");
     const [Description, setDescription] = useState("data.description");
     const [Deadline, setDeadline] = useState(data.deadline);
+    const [Favourite, setFavourite] = useState(data.favourite);
     const clickUncomoplete = () => {
         setStatus('UnComplete');
         document.getElementById('detail_text1').style.color = '#FFFFFF';
@@ -74,6 +76,17 @@ const Tasksdetails = () => {
     const editdescription = (e) => {
         setDescription(e.target.value);
     }
+    const addfavourite = () => {
+        if (!data.favourite) {
+            document.getElementById('AiFillStar').style.display = 'inline';
+        }
+        else {
+            document.getElementById('AiFillStar').style.display = 'none';
+        }
+        setFavourite(!data.favourite);
+        document.getElementById('taskdetail_footer_oke').style.display = 'inline-block';
+    }
+
     const clickoke = () => {
         document.getElementById('taskdetail_footer_oke').style.display = 'none';
         document.getElementById('taskdetail_footer_edit').style.display = 'inline-block';
@@ -90,7 +103,8 @@ const Tasksdetails = () => {
             description: Description,
             deadline: Deadline,
             status: Status,
-            workspace: data.workspace
+            workspace: data.workspace,
+            favourite: Favourite
         }
         if (data.workspace === 'mylife') {
             dispatch(editTaskMylife(dataedit))
@@ -124,12 +138,25 @@ const Tasksdetails = () => {
         setTaskName(data.task_name);
         setDescription(data.description);
         setStatus(data.status);
+        setFavourite(data.favourite);
+        console.log(data);
     }, [data]);
     return (
         <>
             <Modal id='taskdetail' show={show} onHide={() => dispatch(closeTasksdetails())}>
                 <Modal.Header id='taskdetail_header' closeButton>
                     <Modal.Title id='taskdetail_title'>{data.workspace}</Modal.Title>
+                    {
+                        data.favourite ?
+                            <>
+                                <AiOutlineStar id='AiOutlineStar' onClick={() => addfavourite()} />
+                                <AiFillStar id='AiFillStar' onClick={() => addfavourite()} />
+                            </>
+                            : <>
+                                <AiOutlineStar id='AiOutlineStar' onClick={() => addfavourite()} />
+                                <AiFillStar style={{ display: 'none' }} id='AiFillStar' onClick={() => addfavourite()} />
+                            </>
+                    }
                 </Modal.Header>
                 <Modal.Body id='taskdetail_body'>
                     <div className='taskdetail_status' >
