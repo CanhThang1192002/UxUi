@@ -101,6 +101,44 @@
                 background-color: #FFFFFF;
             }
 
+            .team {
+                margin-bottom: 10px;
+
+                .avatar {
+                    margin-left: -10px;
+                }
+
+                .avatar_name {
+                    margin-left: 10px;
+                    font-size: 20px;
+                    font-family: Inter;
+                    font-weight: 600;
+                }
+
+                #AiFillPlusCircle {
+                    float: right;
+                    margin-right: 20px;
+                    margin-top: 3px;
+                    font-size: 25px;
+                    color: rgb(1, 26, 252);
+                    cursor: pointer;
+                }
+
+                .addmember {
+                    margin-top: 10px;
+                    border-radius: 10px;
+                    padding-left: 10px;
+                    width: 70%;
+                }
+
+                #ImCheckmark {
+                    margin-left: 15px;
+                    font-size: 25px;
+                    color: rgb(21, 255, 0);
+                    cursor: pointer;
+                }
+            }
+
             #deadline_text {
                 font-size: 20px;
                 font-family: Inter;

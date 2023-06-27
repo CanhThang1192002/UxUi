@@ -10,7 +10,7 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 19px;
     color: #363431;
 }
@@ -62,10 +62,11 @@
                     border: 1px solid #ccc;
                     margin-top: 1vh;
                     border-radius: 10px;
-                    min-height: 10vh;
-                    background-color: #ff624e;
+                    min-height: 9vh;
+                    background-color: #F7F7F7;
                     @extend %textStyle;
                     padding: 4px;
+                    padding-top: 10px;
                 }
             }
         }
@@ -90,10 +91,11 @@
                     border: 1px solid #ccc;
                     margin-top: 1vh;
                     border-radius: 10px;
-                    min-height: 10vh;
-                    background-color: #7085bb;
+                    min-height: 9vh;
+                    background-color: #F7F7F7;
                     @extend %textStyle;
                     padding: 4px;
+                    padding-top: 10px;
                 }
             }
         }
@@ -119,10 +121,11 @@
                     border: 1px solid #ccc;
                     margin-top: 1vh;
                     border-radius: 10px;
-                    min-height: 10vh;
-                    background-color: #e9cd79;
+                    min-height: 9vh;
+                    background-color: #F7F7F7;
                     @extend %textStyle;
                     padding: 4px;
+                    padding-top: 10px;
                 }
             }
         }

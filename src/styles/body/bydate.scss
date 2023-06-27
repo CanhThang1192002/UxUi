@@ -104,9 +104,10 @@
                     .bydate_day_item_content {
                         position: absolute;
                         bottom: 0;
-                        width: 100%;
+                        right: 0;
+                        width: 80%;
                         border-radius: 20px 0 0 0;
-                        background-color: aqua;
+                        background-color: rgb(92, 247, 234);
 
                         .bydate_day_item_content_item {
                             margin-top: 3px;
@@ -137,6 +138,19 @@
             font-family: 'Inter';
             background-color: rgb(43, 255, 0);
             color: black;
+        }
+
+        .mytasks_container_item {
+            width: 330px;
+            text-align: center;
+            border-radius: 10px;
+            margin-top: 10px;
+
+            .tasksname_mytasks {
+                font-size: 18px;
+                font-weight: 600;
+                font-family: 'Inter';
+            }
         }
     }
 }

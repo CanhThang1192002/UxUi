@@ -7,7 +7,15 @@ import { deleteTaskMylife, editTaskMylife } from '../../store/actions/MyLife_act
 import { deleteTaskWorkspace, editTaskWorkspace } from '../../store/actions/Workspace_action';
 import { closeTasksdetails } from "../../store/actions/ShowTasksdetails";
 import '../../styles/body/tasksdetails.scss'
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineStar, AiFillPlusCircle } from "react-icons/ai";
+import { ImCheckmark } from "react-icons/im";
+import Anh1 from '../../assets/anh1.png';
+import Anh2 from '../../assets/anh2.png';
+import Anh3 from '../../assets/anh3.png';
+import Anh4 from '../../assets/anh4.png';
+import Anh5 from '../../assets/anh5.png';
+import Anh6 from '../../assets/anh6.png';
+import Anh7 from '../../assets/anh7.png';
 const Tasksdetails = () => {
     const dispatch = useDispatch();
     const show = useSelector(state => state.ShowTasksdetails.show);
@@ -17,6 +25,8 @@ const Tasksdetails = () => {
     const [Description, setDescription] = useState("data.description");
     const [Deadline, setDeadline] = useState(data.deadline);
     const [Favourite, setFavourite] = useState(data.favourite);
+    const [Member, setMember] = useState(data.member);
+    const arrmember_name = ['Nam', 'Nhan', 'Duc', 'Hoang', 'Huy', 'Hieu', 'Hoa'];
     const clickUncomoplete = () => {
         setStatus('UnComplete');
         document.getElementById('detail_text1').style.color = '#FFFFFF';
@@ -104,6 +114,7 @@ const Tasksdetails = () => {
             deadline: Deadline,
             status: Status,
             workspace: data.workspace,
+            member: Member,
             favourite: Favourite
         }
         if (data.workspace === 'mylife') {
@@ -113,11 +124,29 @@ const Tasksdetails = () => {
             dispatch(editTaskWorkspace(dataedit))
         }
         toast.success('Edit task successfully');
-        setDeadline(0);
-        setDescription('');
-        setTaskName('');
-        setStatus('');
     }
+    const team = () => {
+        let anh = [Anh1, Anh2, Anh3, Anh4, Anh5, Anh6, Anh7];
+        let arraymember = [];
+        if (data.member > 1) {
+            for (let i = 1; i < data.member; i++) {
+                arraymember.push(<img src={anh[i]} style={{ width: '25px', height: '25px' }} className='avatar' />);
+            }
+            for (let i = 0; i < data.member - 1; i++) {
+                arraymember.push(<span className='avatar_name'>{arrmember_name[i]},</span>);
+            }
+        } else {
+            arraymember.push(<span className='avatar_name'>Add Member</span>)
+        }
+        return arraymember;
+    }
+    const addmember = () => {
+        document.getElementById('addmember').style.display = 'none';
+        document.getElementById('ImCheckmark').style.display = 'none';
+        setMember(Member + 1);
+        toast.success('add member successfully');
+    }
+
     const clickcancel = () => {
         document.getElementById('taskdetail_footer_oke').style.display = 'none';
         document.getElementById('taskdetail_footer_edit').style.display = 'inline-block';
@@ -139,8 +168,26 @@ const Tasksdetails = () => {
         setDescription(data.description);
         setStatus(data.status);
         setFavourite(data.favourite);
-        console.log(data);
+        setMember(data.member);
     }, [data]);
+    useEffect(() => {
+        let dataedit = {
+            id: data.id,
+            task_name: TaskName,
+            description: Description,
+            deadline: Deadline,
+            status: Status,
+            workspace: data.workspace,
+            member: Member,
+            favourite: Favourite
+        }
+        if (data.workspace === 'mylife') {
+            dispatch(editTaskMylife(dataedit))
+        }
+        else {
+            dispatch(editTaskWorkspace(dataedit))
+        }
+    }, [Member]);
     return (
         <>
             <Modal id='taskdetail' show={show} onHide={() => dispatch(closeTasksdetails())}>
@@ -183,6 +230,14 @@ const Tasksdetails = () => {
                     <div className='taskdetail_data'>
                         <textarea disabled rows='2' name='taskdetai_task_name' id='taskdetail_input_task_name' onChange={(e) => edittaskname(e)}>{data.task_name}</textarea >
                         <textarea disabled rows='4' name='taskdetail_description' id='taskdetail_input_description' onChange={(e) => editdescription(e)}>{`Description: ${data.description}`}</textarea>
+                        <div className='team'>
+                            {
+                                team()
+                            }
+                            <AiFillPlusCircle id='AiFillPlusCircle' onClick={() => { document.getElementById('addmember').style.display = 'inline'; document.getElementById('ImCheckmark').style.display = 'inline' }} />
+                            <input style={{ display: 'none' }} placeholder='Email' id='addmember' type='text' className='addmember' />
+                            <ImCheckmark style={{ display: 'none' }} id='ImCheckmark' onClick={() => addmember()} />
+                        </div>
                         <span id='deadline_text'>Deadline:</span><span id='deadline_date'>{data.deadline}</span>
                         <input type='date' id='taskdetail_input_deadline' value={Deadline} onChange={(e) => editdeadline(e)} />
                     </div>

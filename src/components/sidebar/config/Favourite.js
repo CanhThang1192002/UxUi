@@ -15,11 +15,11 @@ const Favourite = () => {
     const Workspaces = useSelector(state => state.WorkspaceRedux.WorkspaceRedux);
     const [data, setData] = useState(MyLife.concat(Workspaces));
     const [data_favourite, setdata_favourite] = useState(data.filter(item => item.favourite === true));
-    const [data_myday, setdata_myday] = useState(data.filter(item => item.deadline === moment(newday).format('DD/MM/YYYY')));
+    const [data_myday, setData_myday] = useState(data.filter(item => moment(item.deadline, 'DD/MM/YYYY').format('DD/MM/YYYY') === moment(newday).format('DD/MM/YYYY')));
     // const data = MyLife.concat(Workspaces);
     // const data_favourite = data.filter(item => item.favourite === true);
     // const [data_mytasks, setdata_mytasks] = useState([]);
-
+    console.log(data_myday);
     const deleteTask = (task) => {
         if (task.workspace === 'mylife') {
             dispatch(deleteTaskMylife(task.id));
@@ -34,7 +34,7 @@ const Favourite = () => {
     }, [MyLife, Workspaces]);
     useEffect(() => {
         setdata_favourite(data.filter(item => item.favourite === true));
-        setdata_myday(data.filter(item => item.deadline === moment(newday).format('DD/MM/YYYY')));
+        setData_myday(data.filter(item => moment(item.deadline, 'DD/MM/YYYY').format('DD/MM/YYYY') === moment(newday).format('DD/MM/YYYY')));
     }, [data]);
 
     return (

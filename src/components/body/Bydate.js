@@ -18,6 +18,8 @@ const Bydate = () => {
     const [month, setMonth] = useState(6);
     const [year, setYear] = useState(2023);
     const [day, setDay] = useState([]);
+    const [data_day, setData_day] = useState([]);
+    const [showSeedetails, setShowSeedetails] = useState(false);
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
@@ -61,10 +63,9 @@ const Bydate = () => {
     }, [titleworkspace, WorkspaceRedux, MyLifeRedux]);
 
     const clickdayitem = (item) => {
-        let data = checkday(item);
-        // let date = moment(`${item}/${month}/${year}`, 'DD/MM/YYYY').format('DD/MM/YYYY');
-        if (data.length > 0) {
-            dispatch(showTasksdetails(data[0]));
+        setData_day(checkday(item));
+        if (checkday(item).length > 0) {
+            setShowSeedetails(true);
         }
         else {
             setShow(true);
@@ -106,6 +107,49 @@ const Bydate = () => {
                 </Modal.Footer>
             </Modal >
             {/* <Form_AddTasks /> */}
+
+            <Modal id='bydate_modal' show={showSeedetails} onHide={() => setShowSeedetails(false)}>
+                <Modal.Header id='bydate_header' closeButton>
+                    <Modal.Title id='bydate_title'>See Details</Modal.Title>
+                </Modal.Header>
+                <Modal.Body id='bydate_body'>
+                    {
+                        data_day.map((item, index) => {
+                            if (item.status === 'Completed') {
+                                return (
+                                    <div key={index} className='mytasks_container_item' id='Completed_mytasks'  >
+                                        {/* <span className="deadline_mytasks" id='Completed_deadline' onClick={() => dispatch(showTasksdetails(item))}>{item.deadline}</span> */}
+                                        <span className="tasksname_mytasks" onClick={() => dispatch(showTasksdetails(item))}>{item.task_name}</span>
+                                    </div>
+                                )
+                            } else {
+                                if (item.status === 'UnComplete') {
+                                    return (
+                                        <div key={index} className='mytasks_container_item' id='UnComplete_mytasks'  >
+                                            {/* <span className="deadline_mytasks" id='UnComplete_deadline' onClick={() => dispatch(showTasksdetails(item))}>{item.deadline}</span> */}
+                                            <span className="tasksname_mytasks" onClick={() => dispatch(showTasksdetails(item))}>{item.task_name}</span>
+                                        </div>
+                                    )
+                                }
+                                else {
+                                    return (
+                                        <div key={index} className='mytasks_container_item' id='Stopped_mytasks'  >
+                                            {/* <span className="deadline_mytasks" id='Stopped_deadline' onClick={() => dispatch(showTasksdetails(item))}>{item.deadline}</span> */}
+                                            <span className="tasksname_mytasks" onClick={() => dispatch(showTasksdetails(item))}>{item.task_name}</span>
+                                        </div>
+                                    )
+                                }
+                            }
+                        })
+                    }
+                </Modal.Body >
+                <Modal.Footer id='bydate_footer'>
+                    <Button id="bydate_close" onClick={() => setShowSeedetails(false)}>
+                        CLOSE
+                    </Button>
+                </Modal.Footer>
+            </Modal >
+
             <Tasksdetails />
             <div className="bydate">
                 <div className='bydate_top'>
@@ -113,7 +157,6 @@ const Bydate = () => {
                     <span className='top_month'>{monthNames[month - 1]}</span>
                     <span className='top_year'>{year}</span>
                     <AiFillCaretRight className='AiFillCaretRight' onClick={() => clickright()} />
-
                 </div>
                 <div className='bydate_content'>
                     <div className='bydate_weeks'>
@@ -137,13 +180,11 @@ const Bydate = () => {
                                                 <span>{item}</span>
                                                 <div className='bydate_day_item_content'>
                                                     {
-                                                        (checkday(item).length > 0) ? checkday(item).map((item1, index1) => {
-                                                            return (
-                                                                <div className='bydate_day_item_content_item' key={index1}>
-                                                                    {item1.task_name}
-                                                                </div>
-                                                            )
-                                                        }) : null
+                                                        (checkday(item).length > 0) ?
+                                                            <div className='bydate_day_item_content_item' >
+                                                                See details
+                                                            </div>
+                                                            : null
                                                     }
                                                 </div>
                                             </li>

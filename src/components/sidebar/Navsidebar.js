@@ -14,7 +14,7 @@ import { TiDelete } from "react-icons/ti";
 import '../../styles/sidebar/Navsidebar.scss';
 import iconProject from '../../assets/iconProject.jpg';
 import iconSubject from '../../assets/iconSubject.jpg';
-
+import Logo from '../../assets/logo.png';
 const Navsidebar = () => {
     const Workspaces = useSelector(state => state.WorkspaceRedux.Workspaces);
     const dispatch = useDispatch();
@@ -75,7 +75,7 @@ const Navsidebar = () => {
 
             <div className="Navsidebar">
                 <div className="nav_logo">
-                    logo
+                    <img className="logo" src={Logo} />
                 </div>
                 <div className="nav_favourite">
                     <NavLink className="navfavourite" to="/home">Favourite</NavLink>
