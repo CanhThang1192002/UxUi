@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { toast } from 'react-toastify';
+import moment from 'moment';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { deleteTaskMylife } from '../../store/actions/MyLife_action';
 import { deleteTaskWorkspace } from '../../store/actions/Workspace_action';
@@ -15,6 +16,7 @@ const Alltasks = () => {
     const title = useSelector(state => state.Page.Page);
     const titleworkspace = useSelector(state => state.Page.PageWorkspace);
     const [data, setData] = useState([]);
+    const [data_month, setdata_month] = useState([]);
     const [month, setMonth] = useState(6);
     const [year, setYear] = useState(2023);
     const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -63,6 +65,16 @@ const Alltasks = () => {
         }
     }, [titleworkspace, WorkspaceRedux, MyLifeRedux]);
 
+    useEffect(() => {
+        if (data && data.length > 0) {
+            setdata_month(data.filter(item => moment(item.deadline, 'DD/MM/YYYY').format('M') === moment(month, 'M').format('M')));
+            console.log(data_month);
+        } else {
+            setdata_month([]);
+        }
+
+    }, [month, year, data])
+
     return (
         <>
             <Tasksdetails />
@@ -75,7 +87,7 @@ const Alltasks = () => {
                 </div>
                 <div className='mytasks_container'>
                     {
-                        data && data.length > 0 && data.map((item, index) => {
+                        data_month && data_month.length > 0 && data_month.map((item, index) => {
                             if (item.status === 'Completed') {
                                 return (
                                     <div key={index} className='mytasks_container_item' id='Completed_mytasks'  >

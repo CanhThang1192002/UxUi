@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import moment from 'moment';
 import '../../styles/body/bystatus.scss'
 import Tasksdetails from "./Tasksdetails";
 import { showTasksdetails } from "../../store/actions/ShowTasksdetails";
@@ -11,6 +12,7 @@ const Bystatus = () => {
     const title = useSelector(state => state.Page.Page);
     const titleworkspace = useSelector(state => state.Page.PageWorkspace);
     const [data, setData] = useState([]);
+    const [data_month, setdata_month] = useState([]);
     const [UnComplete, setUnComplete] = useState([]);
     const [Completed, setCompleted] = useState([]);
     const [Stopped, setStopped] = useState([]);
@@ -55,11 +57,25 @@ const Bystatus = () => {
 
     useEffect(() => {
         if (data && data.length > 0) {
-            setUnComplete(data.filter(item => item.status === 'UnComplete'));
-            setCompleted(data.filter(item => item.status === 'Completed'));
-            setStopped(data.filter(item => item.status === 'Stopped'));
+            setdata_month(data.filter(item => moment(item.deadline, 'DD/MM/YYYY').format('M') === moment(month, 'M').format('M')));
+            console.log(data_month);
+        } else {
+            setdata_month([]);
         }
-    }, [data]);
+
+    }, [month, year, data])
+
+    useEffect(() => {
+        if (data_month && data_month.length > 0) {
+            setUnComplete(data_month.filter(item => item.status === 'UnComplete'));
+            setCompleted(data_month.filter(item => item.status === 'Completed'));
+            setStopped(data_month.filter(item => item.status === 'Stopped'));
+        } else {
+            setUnComplete([]);
+            setCompleted([]);
+            setStopped([]);
+        }
+    }, [data_month]);
 
     return (
         <>

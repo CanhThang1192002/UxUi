@@ -43,11 +43,92 @@
 
     }
 
+    .data_search {
+        position: absolute;
+        top: 43px;
+        left: 270px;
+        padding-left: 10px;
+        border-radius: 10px;
+        background-color: #f3f1f1;
+        width: 49%;
+        z-index: 2;
+        max-height: 250px;
+        overflow-y: auto;
+
+        .search_item {
+            margin-top: 5px;
+            font-weight: 500;
+            font-size: 15px;
+            cursor: pointer;
+
+            #AiOutlineSearch {
+                font-size: 18px;
+            }
+
+            #search_item_deadline {
+                margin-left: 15px;
+            }
+
+            #search_item_task_name {
+                margin-left: 20px;
+            }
+        }
+    }
+
     .avatar {
         width: 30px;
         height: 30px;
         position: absolute;
         right: 50px;
         top: 10px;
+        cursor: pointer;
+    }
+
+    .logout {
+        background-color: #ececec;
+        position: absolute;
+        top: 40px;
+        right: 50px;
+        border-radius: 10px;
+        width: 250px;
+        padding: 20px;
+        z-index: 2;
+
+        .logout_name {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #9b9595;
+
+            .logout_avatar {
+                width: 30px;
+                height: 30px;
+            }
+
+            .logout_firstname {
+                margin-left: 20px;
+                font-size: 20px;
+                font-weight: 600;
+            }
+
+            .logout_lastname {
+                margin-left: 10px;
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+
+        .logout_content {
+            margin-top: 10px;
+
+            .MdLogout {
+                font-size: 25px;
+                margin-right: 20px;
+                margin-left: 5px;
+            }
+
+            .logout_text {
+                font-size: 18px;
+                font-weight: 500;
+            }
+        }
     }
 }

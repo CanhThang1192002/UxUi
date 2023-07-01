@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { toast } from 'react-toastify';
+import moment from 'moment';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import Tasksdetails from "./Tasksdetails";
 import { showTasksdetails } from "../../store/actions/ShowTasksdetails";
@@ -14,6 +15,7 @@ const Mytasks = () => {
     const title = useSelector(state => state.Page.Page);
     const titleworkspace = useSelector(state => state.Page.PageWorkspace);
     const [data, setData] = useState([]);
+    const [data_month, setdata_month] = useState([]);
     const [data_mytasks, setdata_mytasks] = useState([]);
     const [month, setMonth] = useState(6);
     const [year, setYear] = useState(2023);
@@ -56,9 +58,21 @@ const Mytasks = () => {
 
     useEffect(() => {
         if (data && data.length > 0) {
-            setdata_mytasks(data.filter(item => item.member === 1));
+            setdata_month(data.filter(item => moment(item.deadline, 'DD/MM/YYYY').format('M') === moment(month, 'M').format('M')));
+            console.log(data_month);
+        } else {
+            setdata_month([]);
         }
-    }, [data]);
+
+    }, [month, year, data])
+
+    useEffect(() => {
+        if (data_month && data_month.length > 0) {
+            setdata_mytasks(data_month.filter(item => item.member === 1));
+        } else {
+            setdata_mytasks([]);
+        }
+    }, [data_month]);
 
     const deleteTask = (task) => {
         if (task.workspace === 'mylife') {
