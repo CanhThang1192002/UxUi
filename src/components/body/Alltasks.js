@@ -17,7 +17,7 @@ const Alltasks = () => {
     const titleworkspace = useSelector(state => state.Page.PageWorkspace);
     const [data, setData] = useState([]);
     const [data_month, setdata_month] = useState([]);
-    const [month, setMonth] = useState(6);
+    const [month, setMonth] = useState(7);
     const [year, setYear] = useState(2023);
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
@@ -67,7 +67,7 @@ const Alltasks = () => {
 
     useEffect(() => {
         if (data && data.length > 0) {
-            setdata_month(data.filter(item => moment(item.deadline, 'DD/MM/YYYY').format('M') === moment(month, 'M').format('M')));
+            setdata_month(data.filter(item => moment(item.deadline, 'DD/MM/YYYY').format('M') === moment(month, 'M').format('M') && moment(item.deadline, 'DD/MM/YYYY').format('YYYY') === moment(year, 'YYYY').format('YYYY')));
             console.log(data_month);
         } else {
             setdata_month([]);
@@ -94,6 +94,7 @@ const Alltasks = () => {
                                         <span className="deadline_mytasks" id='Completed_deadline' onClick={() => dispatch(showTasksdetails(item))}>{item.deadline}</span>
                                         <span className="tasksname_mytasks" onClick={() => dispatch(showTasksdetails(item))}>{item.task_name}</span>
                                         <button className="btn_mytasks" onClick={() => deleteTask(item)}>Delete</button>
+                                        <span id='position_mytasks_compalted' className="position_mytasks">{item.position}</span>
                                     </div>
                                 )
                             } else {
@@ -103,6 +104,7 @@ const Alltasks = () => {
                                             <span className="deadline_mytasks" id='UnComplete_deadline' onClick={() => dispatch(showTasksdetails(item))}>{item.deadline}</span>
                                             <span className="tasksname_mytasks" onClick={() => dispatch(showTasksdetails(item))}>{item.task_name}</span>
                                             <button className="btn_mytasks" onClick={() => deleteTask(item)}>Delete</button>
+                                            <span id='position_mytasks_uncomplate' className="position_mytasks">{item.position}</span>
                                         </div>
                                     )
                                 }
@@ -112,6 +114,7 @@ const Alltasks = () => {
                                             <span className="deadline_mytasks" id='Stopped_deadline' onClick={() => dispatch(showTasksdetails(item))}>{item.deadline}</span>
                                             <span className="tasksname_mytasks" onClick={() => dispatch(showTasksdetails(item))}>{item.task_name}</span>
                                             <button className="btn_mytasks" onClick={() => deleteTask(item)}>Delete</button>
+                                            <span id='position_mytasks_stopped' className="position_mytasks">{item.position}</span>
                                         </div>
                                     )
                                 }

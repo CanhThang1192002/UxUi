@@ -2,66 +2,96 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 19px;
     line-height: 19px;
     color: #363431;
 }
 
 .favoutite {
-    // border: 1px solid #cccccc;
-    // height: 100vh;
-    width: 75%;
-    margin-left: 22.5%;
-    margin-top: 15px;
+    height: 100vh;
+    width: 81%;
+    margin-left: 19%;
+    padding-left: 3%;
+    padding-right: 3%;
     position: absolute;
     top: 0;
-    background-color: #ffff;
+    background-color: #d4d0d0;
+
+    ::-webkit-scrollbar {
+        width: 8px;
+        background-color: #d4d0d0;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgb(121, 120, 120);
+        border-radius: 5px;
+    }
 
     .favoutite_body {
-        margin-top: 20px;
+        margin-top: 10px;
         width: 100%;
 
         .favoutite_container {
-            width: 46%;
             text-align: center;
+            width: 95%;
+            margin: auto;
+            height: 500px;
 
-            #favoutite_title {
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 600;
-                font-size: 35px;
-                line-height: 40px;
-                color: #363431;
-                border-bottom: 2px solid #6e6c69;
-                border-radius: 30px;
-                padding: 10px;
-                box-shadow: -3px 4px 3px rgba(0, 0, 0, 0.25);
+            .home_header {
+                position: relative;
+                // background-color: #39e5fc;
+                background-image: linear-gradient(0, rgb(245, 107, 245), rgb(60, 210, 247));
+                height: 100px;
+                width: 90%;
+                border-radius: 5px;
+                margin: auto;
+                z-index: 1;
+                box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.35);
+                text-align: center;
+                // color: #FFF;
+
+                .weeks_day {
+                    padding-top: 10px;
+                    font-family: 'Inter';
+                    font-size: 30px;
+                    font-weight: 550;
+                }
+
+                .my_day {
+                    font-family: 'Inter';
+                    font-size: 20px;
+                    font-weight: 500;
+                    transform: skew(-10deg);
+                }
             }
 
             .favoutite_data {
-                // background-color: rgb(243, 241, 237);
-                height: 470px;
+                height: 500px;
                 overflow-y: auto;
                 position: relative;
                 padding-left: 4px;
-                // top: -25px;
-                // border-left: 1px solid #7c7a77;
-                // border-right: 1px solid #7c7a77;
+                top: -50px;
+                z-index: 0;
+                padding-top: 70px;
+                background-color: #FFF;
+                border-radius: 5px;
+
 
                 .mytasks_container_item {
-                    margin-top: 2vh;
                     height: 9vh;
-                    width: 100%;
-                    border-radius: 25px;
+                    width: 80%;
+                    border-radius: 5px;
                     @extend %textStyle;
                     box-shadow: -3px 4px 3px rgba(0, 0, 0, 0.25);
+                    margin: auto;
+                    margin-top: 10px;
 
                     .deadline_mytasks {
                         float: left;
                         width: 20%;
                         height: 9vh;
                         line-height: 9vh;
-                        border-radius: 25px 0 0 25px;
+                        border-radius: 5px 0 0 5px;
                         font-size: 15px;
                     }
 
@@ -69,7 +99,18 @@
                         width: 80%;
                         height: 9vh;
                         line-height: 9vh;
-                        border-radius: 0 25px 25px 0;
+                        border-radius: 0 5px 5px 0;
+                    }
+
+                    .position_mytasks {
+                        float: right;
+                        margin-right: 30px;
+                        height: 35px;
+                        line-height: 35px;
+                        margin-top: 2vh;
+                        width: 65px;
+                        border-radius: 5px;
+                        width: 100px;
                     }
 
                     .btn_mytasks {
@@ -79,74 +120,7 @@
                         height: 35px;
                         margin-top: 2vh;
                         width: 65px;
-                        border-radius: 25px;
-                    }
-
-                }
-
-            }
-        }
-
-        .myday_container {
-            position: absolute;
-            top: 70px;
-            right: 20px;
-            width: 46%;
-            text-align: center;
-
-            #myday_title {
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 600;
-                font-size: 35px;
-                line-height: 40px;
-                color: #363431;
-                border-bottom: 2px solid #6e6c69;
-                border-radius: 30px;
-                padding: 10px;
-                box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.25);
-            }
-
-            .myday_data {
-                // background-color: rgb(243, 241, 237);
-                height: 470px;
-                overflow-y: auto;
-                position: relative;
-
-                // top: -25px;
-                // border-left: 1px solid #7c7a77;
-                // border-right: 1px solid #7c7a77;
-                .mytasks_container_item {
-                    margin-top: 2vh;
-                    height: 9vh;
-                    width: 100%;
-                    border-radius: 25px;
-                    @extend %textStyle;
-
-                    .deadline_mytasks {
-                        float: left;
-                        width: 20%;
-                        height: 9vh;
-                        line-height: 9vh;
-                        border-radius: 25px 0 0 25px;
-                        font-size: 15px;
-                    }
-
-                    .tasksname_mytasks {
-                        width: 80%;
-                        height: 9vh;
-                        line-height: 9vh;
-                        border-radius: 0 25px 25px 0;
-                    }
-
-                    .btn_mytasks {
-                        border: 0;
-                        float: right;
-                        margin-right: 10px;
-                        height: 35px;
-                        margin-top: 2vh;
-                        width: 65px;
-                        border-radius: 25px;
+                        border-radius: 5px;
                     }
 
                 }

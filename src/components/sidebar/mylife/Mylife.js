@@ -8,9 +8,11 @@ const Mylife = () => {
         <>
             <div className="mylife">
                 <Header />
-                <Titlecontainer />
-                <Navbar />
-                <div>
+                <div className="mylife_title">
+                    <Titlecontainer />
+                    <Navbar />
+                </div>
+                <div className='mylife_content'>
                     <Outlet />
                 </div>
             </div>

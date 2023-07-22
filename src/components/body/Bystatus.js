@@ -16,7 +16,7 @@ const Bystatus = () => {
     const [UnComplete, setUnComplete] = useState([]);
     const [Completed, setCompleted] = useState([]);
     const [Stopped, setStopped] = useState([]);
-    const [month, setMonth] = useState(6);
+    const [month, setMonth] = useState(7);
     const [year, setYear] = useState(2023);
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
@@ -57,7 +57,7 @@ const Bystatus = () => {
 
     useEffect(() => {
         if (data && data.length > 0) {
-            setdata_month(data.filter(item => moment(item.deadline, 'DD/MM/YYYY').format('M') === moment(month, 'M').format('M')));
+            setdata_month(data.filter(item => moment(item.deadline, 'DD/MM/YYYY').format('M') === moment(month, 'M').format('M') && moment(item.deadline, 'DD/MM/YYYY').format('YYYY') === moment(year, 'YYYY').format('YYYY')));
             console.log(data_month);
         } else {
             setdata_month([]);

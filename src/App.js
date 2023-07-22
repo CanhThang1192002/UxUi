@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Sidebar from './components/sidebar/Sidebar';
 import Signin from './components/login/Signin';
 import Signup from './components/login/Signup';
+import Home from "./components/sidebar/home/Home"
 import Favourite from "./components/sidebar/config/Favourite";
 import Setting from "./components/sidebar/config/Setting";
 import Notice from "./components/sidebar/config/Notice";
@@ -24,7 +25,8 @@ function App() {
           <Route path="/" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/home" element={<Sidebar />} >
-            <Route index element={<Favourite />} />
+            <Route index element={<Home />} />
+            <Route path="favourite" element={<Favourite />} />
             <Route path="calendar" element={<Calendar />} >
               <Route index element={<Bystatus />} />
               <Route path="bystatus" element={<Bystatus />} />

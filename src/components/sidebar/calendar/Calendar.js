@@ -8,9 +8,11 @@ const Calendar = () => {
         <>
             <div className="calendar">
                 <Header />
-                <Titlecontainer />
-                <Navbar />
-                <div>
+                <div className='title_calendar'>
+                    <Titlecontainer />
+                    <Navbar />
+                </div>
+                <div className='calendar_content'>
                     <Outlet />
                 </div>
             </div>

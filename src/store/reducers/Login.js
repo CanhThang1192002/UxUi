@@ -1,6 +1,6 @@
 const initState = {
     Login: [
-        // { id: 1, username: "namidol@gmail.com", password: "1234", firstName: "Nguyen", lastName: "Nam" },
+        { id: 1, username: "namidol@gmail.com", password: "1234", firstName: "Nguyen", lastName: "Nam" },
         // { id: 2, username: "nhanidol@gmail.com", password: "4567", firstName: "Nguyen", lastName: "Nhan" },
     ]
 }

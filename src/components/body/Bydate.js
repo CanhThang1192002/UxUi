@@ -15,11 +15,12 @@ const Bydate = () => {
     const title = useSelector(state => state.Page.Page);
     const titleworkspace = useSelector(state => state.Page.PageWorkspace);
     const [data, setData] = useState([]);
-    const [month, setMonth] = useState(6);
+    const [month, setMonth] = useState(7);
     const [year, setYear] = useState(2023);
     const [day, setDay] = useState([]);
     const [data_day, setData_day] = useState([]);
     const [showSeedetails, setShowSeedetails] = useState(false);
+    const [newday, setNewday] = useState();
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
@@ -66,6 +67,7 @@ const Bydate = () => {
         setData_day(checkday(item));
         if (checkday(item).length > 0) {
             setShowSeedetails(true);
+            setNewday(item);
         }
         else {
             setShow(true);
@@ -110,7 +112,7 @@ const Bydate = () => {
 
             <Modal id='bydate_modal' show={showSeedetails} onHide={() => setShowSeedetails(false)}>
                 <Modal.Header id='bydate_header' closeButton>
-                    <Modal.Title id='bydate_title'>See Details</Modal.Title>
+                    <Modal.Title id='bydate_title'>{newday} - {month} - {year}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body id='bydate_body'>
                     {
@@ -118,7 +120,7 @@ const Bydate = () => {
                             if (item.status === 'Completed') {
                                 return (
                                     <div key={index} className='mytasks_container_item' id='Completed_mytasks'  >
-                                        {/* <span className="deadline_mytasks" id='Completed_deadline' onClick={() => dispatch(showTasksdetails(item))}>{item.deadline}</span> */}
+                                        <span className="deadline_mytasks" id='Completed_deadline' onClick={() => dispatch(showTasksdetails(item))}>{item.position}</span>
                                         <span className="tasksname_mytasks" onClick={() => dispatch(showTasksdetails(item))}>{item.task_name}</span>
                                     </div>
                                 )
@@ -126,7 +128,7 @@ const Bydate = () => {
                                 if (item.status === 'UnComplete') {
                                     return (
                                         <div key={index} className='mytasks_container_item' id='UnComplete_mytasks'  >
-                                            {/* <span className="deadline_mytasks" id='UnComplete_deadline' onClick={() => dispatch(showTasksdetails(item))}>{item.deadline}</span> */}
+                                            <span className="deadline_mytasks" id='UnComplete_deadline' onClick={() => dispatch(showTasksdetails(item))}>{item.position}</span>
                                             <span className="tasksname_mytasks" onClick={() => dispatch(showTasksdetails(item))}>{item.task_name}</span>
                                         </div>
                                     )
@@ -134,7 +136,7 @@ const Bydate = () => {
                                 else {
                                     return (
                                         <div key={index} className='mytasks_container_item' id='Stopped_mytasks'  >
-                                            {/* <span className="deadline_mytasks" id='Stopped_deadline' onClick={() => dispatch(showTasksdetails(item))}>{item.deadline}</span> */}
+                                            <span className="deadline_mytasks" id='Stopped_deadline' onClick={() => dispatch(showTasksdetails(item))}>{item.position}</span>
                                             <span className="tasksname_mytasks" onClick={() => dispatch(showTasksdetails(item))}>{item.task_name}</span>
                                         </div>
                                     )
@@ -180,11 +182,26 @@ const Bydate = () => {
                                                 <span>{item}</span>
                                                 <div className='bydate_day_item_content'>
                                                     {
-                                                        (checkday(item).length > 0) ?
-                                                            <div className='bydate_day_item_content_item' >
-                                                                See details
-                                                            </div>
-                                                            : null
+                                                        checkday(item).length > 0 && checkday(item).map((item, index) => {
+                                                            if (item.status === 'Completed') {
+                                                                return (
+                                                                    <div className='bydate_day_item_data' style={{ backgroundColor: '#00aac0' }}>{item.task_name}</div>
+                                                                )
+                                                            }
+                                                            else {
+                                                                if (item.status === 'UnComplete') {
+                                                                    return (
+                                                                        <div className='bydate_day_item_data' style={{ backgroundColor: '#f53426' }}>{item.task_name}</div>
+                                                                    )
+                                                                }
+                                                                else {
+                                                                    return (
+                                                                        <div className='bydate_day_item_data' style={{ backgroundColor: '#ff9900' }}>{item.task_name}</div>
+                                                                    )
+                                                                }
+                                                            }
+                                                        })
+
                                                     }
                                                 </div>
                                             </li>
@@ -194,7 +211,7 @@ const Bydate = () => {
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
 
     )

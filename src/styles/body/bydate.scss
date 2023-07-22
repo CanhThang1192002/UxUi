@@ -1,20 +1,25 @@
 .bydate {
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 10px;
 
     .bydate_top {
         text-align: center;
-        background-color: #DEE9FF;
-        height: 25px;
-        line-height: 25px;
+        background-color: #c5c4c4;
+        height: 30px;
+        line-height: 30px;
         padding-right: 15px;
+        padding-top: 5px;
+        border-radius: 5px 5px 0 0;
 
         .top_month {
             font-family: 'Inter';
             font-style: normal;
             font-weight: 600;
-            font-size: 25px;
+            font-size: 23px;
             height: 25px;
             line-height: 25px;
-            color: #4e4e52;
+            color: #1c1c1d;
             margin-right: 25px;
         }
 
@@ -22,9 +27,9 @@
             font-family: 'Inter';
             font-style: normal;
             font-weight: 600;
-            font-size: 25px;
+            font-size: 23px;
             line-height: 19px;
-            color: #4e4e52;
+            color: #1c1c1d;
 
         }
 
@@ -70,48 +75,67 @@
         .bydate_weeks {
             padding-top: 5px;
             padding-right: 15px;
-            background-color: #DEE9FF;
+            background-color: #c5c4c4;
 
             .weeks {
                 padding-bottom: 10px;
 
                 .bydate_weeks_item {
-                    font-family: 'Inter';
+                    // font-family: 'Inter';
+                    font-family: 'Space Grotesk', Helvetica, Arial, sans-serif;
                     font-style: normal;
-                    font-weight: 600;
-                    font-size: 19px;
+                    font-weight: 550;
+                    font-size: 16px;
                     line-height: 19px;
-                    color: #636472;
+                    color: #313135;
                 }
             }
         }
 
         .bydate_days {
-            height: 360px;
+            height: 380px;
             overflow-y: scroll;
 
             .days {
                 .bydate_day_item {
-                    background-color: #F7F7F7;
+                    background-color: #fcfcfc;
+                    // background-color: #FFF;
                     font-size: 1rem;
                     font-weight: 600;
                     height: 15vh;
-                    border: 1px solid #DAD9D9;
+                    border: 1px solid #a3a1a1;
                     border-collapse: collapse;
                     position: relative;
                     cursor: pointer;
 
                     .bydate_day_item_content {
                         position: absolute;
-                        bottom: 0;
-                        right: 0;
-                        width: 80%;
-                        border-radius: 20px 0 0 0;
-                        background-color: rgb(92, 247, 234);
+                        left: 3px;
+                        bottom: 2px;
+                        width: 95%;
+                        max-height: 60px;
+                        overflow: auto;
 
-                        .bydate_day_item_content_item {
+                        ::-webkit-scrollbar {
+                            width: 3px;
+                            background-color: #fcfcfc;
+                        }
+
+                        ::-webkit-scrollbar-thumb {
+                            background-color: rgb(34, 33, 33);
+                            border-radius: 5px;
+                        }
+
+
+                        .bydate_day_item_data {
                             margin-top: 3px;
-
+                            font-size: 13px;
+                            padding: 3px;
+                            border-radius: 3px;
+                            height: 20px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            line-height: 20px;
                         }
                     }
                 }
@@ -122,18 +146,35 @@
 }
 
 #bydate_modal {
+    width: 500px;
+    border-radius: 5px;
+
     #bydate_header {
+        text-align: center;
+        border: 0;
+        background-color: #bbb9b9;
+
+        #bydate_title {
+            margin: auto;
+            font-family: 'Space Grotesk', Helvetica, Arial, sans-serif;
+            font-size: 26px;
+            font-weight: 600;
+        }
+
         .btn-close {
-            margin: 0 30px 0 0;
+            position: absolute;
+            right: 40px;
             font-size: 20px;
         }
     }
 
     #bydate_body {
-        margin: auto;
+        border: 0;
+        background-color: #d8d8d8;
 
         #bydate_body_createtasks {
-            font-size: 18px;
+            margin-left: 160px;
+            font-size: 20px;
             font-weight: 600;
             font-family: 'Inter';
             background-color: rgb(43, 255, 0);
@@ -141,16 +182,39 @@
         }
 
         .mytasks_container_item {
-            width: 330px;
+            width: 430px;
             text-align: center;
-            border-radius: 10px;
-            margin-top: 10px;
+            border-radius: 5px;
+            margin: auto;
+            height: 35px;
+            line-height: 35px;
+            margin-bottom: 10px;
+            box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2);
 
             .tasksname_mytasks {
                 font-size: 18px;
                 font-weight: 600;
                 font-family: 'Inter';
             }
+
+            .deadline_mytasks {
+                float: left;
+                padding: 0 15px;
+                font-size: 18px;
+                font-weight: 600;
+                font-family: 'Inter';
+            }
+        }
+
+    }
+
+    #bydate_footer {
+        border: 0;
+        background-color: #d8d8d8;
+
+        #bydate_close {
+            margin: auto;
+            box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2);
         }
     }
 }

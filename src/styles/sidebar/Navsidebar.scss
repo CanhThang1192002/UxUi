@@ -1,12 +1,12 @@
 // $iconColor: #363431;
 
 %titleStyle {
-    font-family: 'Inter';
+    font-family: 'Space Grotesk', Helvetica, Arial, sans-serif;
     font-style: normal;
-    font-weight: 600;
-    font-size: 23px;
-    line-height: 23px;
-    color: #363431;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 33px;
+    color: rgba(255, 255, 255, 1);
 }
 
 %configStyle {
@@ -17,88 +17,127 @@
     text-decoration: none;
 }
 
+
 .Navsidebar {
     border: 1px solid #cccccc;
-    background-color: #f7f7f7;
+    // background-color: #f7f7f7;
+    background-image: linear-gradient(0, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../../assets/bg1.png");
+    background-size: cover;
+    border: 0;
+
     height: 100vh;
-    width: 18%;
+    width: 19%;
     padding: 20px;
     padding-top: 5px;
 
+    ::-webkit-scrollbar {
+        width: 8px;
+        background-color: #383838;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 1);
+        border-radius: 5px;
+    }
+
     .nav_logo {
-        .logo {
-            width: 90%;
+        text-align: center;
+
+        .sidebar_logo {
+            width: 50%;
             height: 100px;
-            margin-left: 10px;
+            // margin-left: 10px;
         }
 
-        padding-bottom: 10px;
+        // padding-bottom: 10px;
         // border-bottom: 1px solid #cccccc;
     }
 
     .nav_favourite {
-        // background-color: aqua;
-        height: 30px;
-        line-height: 30px;
+        // background-color: #00acc1;
+        margin-top: 10px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 5px;
 
         .icon_favourite {
-            font-size: 25px;
-            float: right;
-            margin-right: 5px;
+            font-size: 24px;
+            margin-top: -3px;
+            margin-left: 15px;
+            color: rgba(255, 255, 255, 1);
         }
 
         .navfavourite {
+            margin-left: 15px;
             @extend %titleStyle;
             text-decoration: none;
         }
     }
 
     .nav_workspace {
-        margin-top: 15px;
-        border-top: 2px solid #DAD9D9;
-        border-bottom: 2px solid #DAD9D9;
-        padding: 15px 0 15px 0px;
+        margin-top: 5px;
+        // border-top: 2px solid #DAD9D9;
+        // border-bottom: 2px solid #DAD9D9;
 
-        .workspace_title {
-            @extend %titleStyle;
+        .workspaceTitle {
+            // background-color: #00acc1;
+            border-radius: 4px;
+            height: 40px;
+            line-height: 40px;
+
+            .BsPersonWorkspace {
+                font-size: 20px;
+                margin-top: -3px;
+                margin-left: 15px;
+                color: rgba(255, 255, 255, 1);
+            }
+
+            .workspace_title {
+                margin-left: 15px;
+                @extend %titleStyle;
+            }
+
+            .AiOutlinePlus {
+                float: right;
+                margin-right: 10px;
+                margin-top: 9px;
+                cursor: pointer;
+                font-size: 23px;
+                color: rgba(255, 255, 255, 1);
+            }
         }
 
-        .AiOutlinePlus {
-            float: right;
-            margin-right: 10px;
-            cursor: pointer;
-            font-size: 25px;
-            color: black;
-        }
-
-        .TiDelete {
+        .TiDeleteOutline {
             float: right;
             cursor: pointer;
             font-size: 18px;
             font-weight: 600;
-            color: rgb(73, 66, 66);
+            color: rgba(255, 255, 255, 1);
             margin-right: 15px;
             margin-top: 5px;
         }
 
         .workspace_list {
-            height: 100px;
+            max-height: 150px;
             overflow-y: auto;
+            // background-color: aqua;
+            margin-left: 30px;
+            margin-right: 15px;
 
             .workspace_item {
                 margin: 5px 0 5px 0;
 
                 .icon {
                     margin-left: 15px;
-                    width: 21px;
-                    height: 21px;
+                    font-size: 18px;
+                    color: rgba(255, 255, 255, 1);
                 }
 
                 .nav_workspace_item {
-                    margin-left: 20px;
+                    margin-left: 15px;
                     text-decoration: none;
                     @extend %titleStyle;
-                    font-size: 16px;
+                    font-size: 13px;
                     line-height: 20px;
                 }
 
@@ -107,130 +146,63 @@
     }
 
     .nav_calendar {
-        // border: 1px solid black;
-        margin: 25px 0 25px 0;
-        height: 30px;
-        line-height: 30px;
+        // background-color: #00acc1;
+        margin-top: 5px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 5px;
 
         .AiFillCalendar {
-            font-size: 23px;
-            float: right;
-            margin-right: 5px;
-            // color: #0893b7;
+            font-size: 21px;
+            margin-top: -3px;
+            margin-left: 15px;
+            color: rgba(255, 255, 255, 1);
         }
 
         .navcalendar {
             @extend %titleStyle;
             text-decoration: none;
+            margin-left: 15px;
         }
     }
 
     .nav_mylife {
-        // border: 1px solid black;
-        margin: 25px 0 25px 0;
-        height: 30px;
-        line-height: 30px;
+        // background-color: #00acc1;
+        margin-top: 5px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 5px;
 
         .AiFillClockCircle {
-            font-size: 23px;
-            float: right;
-            margin-right: 5px;
-            // color: #0893b7;
+            font-size: 21px;
+            margin-top: -3px;
+            margin-left: 15px;
+            color: rgba(255, 255, 255, 1);
         }
 
         .navmylife {
             @extend %titleStyle;
             text-decoration: none;
+            margin-left: 15px;
         }
     }
 
-    .setting_notice {
-        position: fixed;
-        bottom: 25px;
-        // left: 20px;
-
-        .nav_help {
-            height: 30px;
-            line-height: 30px;
-
-            .navhelp {
-                @extend %configStyle;
-            }
-
-            .icon {
-                font-size: 30px;
-                color: #363431;
-            }
-
-        }
-
-        .nav_help:hover {
-            .navhelp {
-                display: inline;
-            }
-
-            .icon {
-                color: #000000;
-            }
-        }
-
-        .nav_notice {
-            margin-top: 20px;
-            height: 30px;
-            line-height: 30px;
-            text-decoration: none;
-
-            .navnotice {
-                @extend %configStyle;
-            }
-
-            .icon {
-                font-size: 30px;
-                color: #363431;
-            }
-        }
-
-        .nav_notice:hover {
-            .navnotice {
-                display: inline;
-            }
-
-            .icon {
-                color: #000000;
-            }
-        }
-
-        .nav_setting {
-            height: 30px;
-            line-height: 30px;
-            margin-top: 20px;
-
-            .navsetting {
-                @extend %configStyle;
-            }
-
-            .icon {
-                font-size: 30px;
-                color: #363431;
-            }
-
-        }
-
-        .nav_setting:hover {
-            .navsetting {
-                display: inline;
-            }
-
-            .icon {
-                color: #000000;
-            }
-        }
+    .nav_favourite:has(.navfavourite.active) {
+        background-color: #00acc1;
     }
 
-    a.active {
-        // background-color: #04AA6D;
-        color: #236BFE !important;
+    .nav_calendar:has(.navcalendar.active) {
+        background-color: #00acc1;
     }
+
+    .nav_mylife:has(.navmylife.active) {
+        background-color: #00acc1;
+    }
+
+    .nav_workspace:has(.nav_workspace_item.active) .workspaceTitle {
+        background-color: #00acc1;
+    }
+
 }
 
 //form add workspace
@@ -239,28 +211,28 @@
     width: 90%;
     margin: 0px auto;
     margin-top: 10px;
-    border-radius: 20px;
+    border-radius: 5px;
     height: 40px;
     padding: 0 10px 0 10px;
     text-align: center;
-    font-family: 'Inter';
+    font-family: 'Space Grotesk', Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 19px;
 }
 
 .formaddworkspace {
-    position: fixed;
     top: 30px;
+    width: 350px;
+    margin-left: 500px;
+    border-radius: 5px;
 
-    .modal-content {
-        width: 300px;
-        border-radius: 24px;
-        margin-bottom: 80px;
+    .addworkspace_header {
+        background-color: rgb(0, 45, 192);
 
         #formaddworkspace_header {
             color: white;
-            font-family: 'Inter';
+            font-family: 'Space Grotesk', Helvetica, Arial, sans-serif;
             font-style: normal;
             font-weight: 600;
             font-size: 23px;
@@ -268,37 +240,35 @@
         }
     }
 
-    .modal-body {
+    .addworkspace_body {
+        background-color: #ccc;
 
         .input_sub_pro {
-            margin-top: 30px;
+            margin-top: 15px;
             @extend %inputStyle;
+            box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.3);
         }
 
         #sub_pro {
             @extend %inputStyle;
             cursor: pointer;
+            width: 80%;
 
             .subject {
-                margin: 5px;
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 600;
-                font-size: 18px;
+                font-weight: 550;
+                font-size: 16px;
                 border: 1px solid rgb(105, 101, 101);
-                border-radius: 20px;
-                background-color: rgb(226, 223, 223);
+                background-color: rgb(235, 234, 234);
+                box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.3);
             }
 
             .project {
-                margin: 5px;
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 600;
-                font-size: 18px;
+                margin-top: 3px;
+                font-weight: 550;
+                font-size: 16px;
                 border: 1px solid rgb(105, 101, 101);
-                border-radius: 20px;
-                background-color: rgb(226, 223, 223);
+                background-color: rgb(235, 234, 234);
+                box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.3);
             }
 
         }
@@ -306,8 +276,24 @@
         .input_workspace_name {
             @extend %inputStyle;
             margin-top: 30px;
+            box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.3);
         }
 
+    }
+
+    .addworkspace_footer {
+        background-color: #bdbcbc;
+        border: 0;
+
+        .addworkspace_add {
+            width: 80px;
+            margin-right: 70px;
+        }
+
+        .addworkspacr_close {
+            width: 80px;
+            margin-right: 40px;
+        }
     }
 
 }

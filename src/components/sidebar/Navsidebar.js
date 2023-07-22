@@ -8,12 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from 'react-toastify';
 import { addWorkspace, deleteWorkspace } from "../../store/actions/Workspace_action";
 import { setpageWorkspace, setpage } from "../../store/actions/Page";
-import { AiFillClockCircle, AiFillCalendar, AiOutlinePlus, AiFillStar, AiFillSetting, AiFillBell } from "react-icons/ai";
-import { MdHelp } from "react-icons/md";
-import { TiDelete } from "react-icons/ti";
+import { AiFillClockCircle, AiFillCalendar, AiOutlinePlus, AiFillStar, AiOutlineProject } from "react-icons/ai";
+import { MdSubject } from "react-icons/md";
+import { TiDeleteOutline } from "react-icons/ti";
+import { BsPersonWorkspace } from "react-icons/bs";
 import '../../styles/sidebar/Navsidebar.scss';
-import iconProject from '../../assets/iconProject.jpg';
-import iconSubject from '../../assets/iconSubject.jpg';
 import Logo from '../../assets/logo.png';
 const Navsidebar = () => {
     const Workspaces = useSelector(state => state.WorkspaceRedux.Workspaces);
@@ -56,8 +55,8 @@ const Navsidebar = () => {
     return (
         <>
             <Modal className="formaddworkspace" show={show}>
-                <Modal.Header ><span id="formaddworkspace_header">Add Workspace</span></Modal.Header>
-                <Modal.Body>
+                <Modal.Header className="addworkspace_header"><span id="formaddworkspace_header">Add Workspace</span></Modal.Header>
+                <Modal.Body className="addworkspace_body">
                     <input className="input_sub_pro" placeholder="subject or project" value={workspace.Workspaces_type} onClick={() => document.getElementById("sub_pro").style.display = "block"}></input>
                     <div id="sub_pro" style={{ display: "none" }}>
                         <div className="subject" onClick={() => clickSubject()}> Subject</div>
@@ -65,9 +64,9 @@ const Navsidebar = () => {
                     </div>
                     <input className="input_workspace_name" type="text" placeholder="Workspace name" value={workspace.Workspaces_name} onChange={(e) => input_workspace_name(e)} />
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={() => add()}>Add</Button>
-                    <Button variant="secondary" onClick={() => setShow(false)}>
+                <Modal.Footer className="addworkspace_footer">
+                    <Button className="addworkspace_add" onClick={() => add()}>Add</Button>
+                    <Button className="addworkspacr_close" variant="secondary" onClick={() => setShow(false)}>
                         Close
                     </Button>
                 </Modal.Footer>
@@ -75,68 +74,54 @@ const Navsidebar = () => {
 
             <div className="Navsidebar">
                 <div className="nav_logo">
-                    <img className="logo" src={Logo} />
+                    <NavLink className="navlogo" to="/home"><img className="sidebar_logo" src={Logo} /></NavLink>
                 </div>
                 <div className="nav_favourite">
-                    <NavLink className="navfavourite" to="/home">Favourite</NavLink>
                     <AiFillStar className="icon_favourite" />
+                    <NavLink className="navfavourite" to="/home/favourite">Favourite</NavLink>
+
+                </div>
+                <div className="nav_calendar" onClick={() => dispatch(setpage('calendar'))}>
+                    <AiFillCalendar className="AiFillCalendar" />
+                    <NavLink className="navcalendar" to="/home/calendar">Calendar</NavLink>
+
+
+                </div>
+                <div className="nav_mylife" onClick={() => dispatch(setpage('mylife'))}>
+                    <AiFillClockCircle className="AiFillClockCircle" />
+                    <NavLink className="navmylife" to="/home/mylife">Mylife</NavLink>
                 </div>
                 <div className="nav_workspace">
-                    <span className="workspace_title">Workspace</span>
-                    <AiOutlinePlus className="AiOutlinePlus" onClick={() => ShowAddWorkspace()} />
+                    <div className="workspaceTitle">
+                        <BsPersonWorkspace className="BsPersonWorkspace" />
+                        <span className="workspace_title">Workspace</span>
+                        <AiOutlinePlus className="AiOutlinePlus" onClick={() => ShowAddWorkspace()} />
+                    </div>
                     <div className="workspace_list">
                         {
                             Workspaces && Workspaces.length > 0 && Workspaces.map((item, index) => {
                                 if (item.Workspaces_type === "subject") {
                                     return (
                                         <div className="workspace_item" key={index}>
-                                            <img className="icon" src={iconSubject} />
+                                            {/* <img className="icon" src={iconSubject} /> */}
+                                            <MdSubject className="icon" />
                                             <NavLink className="nav_workspace_item" to="/home/workspace" onClick={() => click_workspace_name(item)}>{item.Workspaces_name}</NavLink>
-                                            <TiDelete className="TiDelete" onClick={() => deleteWorkspaceName(item)} />
+                                            <TiDeleteOutline className="TiDeleteOutline" onClick={() => deleteWorkspaceName(item)} />
                                         </div>
                                     )
                                 }
                                 else {
                                     return (
                                         <div className="workspace_item" key={index}>
-                                            <img className="icon" src={iconProject} />
+                                            {/* <img className="icon" src={iconProject} /> */}
+                                            <AiOutlineProject className="icon" />
                                             <NavLink className="nav_workspace_item" to="/home/workspace" onClick={() => click_workspace_name(item)}>{item.Workspaces_name}</NavLink>
-                                            <TiDelete className="TiDelete" onClick={() => deleteWorkspaceName(item)} />
+                                            <TiDeleteOutline className="TiDeleteOutline" onClick={() => deleteWorkspaceName(item)} />
                                         </div>
                                     )
                                 }
                             })
                         }
-                    </div>
-                </div>
-                <div className="nav_calendar" onClick={() => dispatch(setpage('calendar'))}>
-                    <NavLink className="navcalendar" to="/home/calendar">Calendar</NavLink>
-                    <AiFillCalendar className="AiFillCalendar" />
-
-                </div>
-                <div className="nav_mylife" onClick={() => dispatch(setpage('mylife'))}>
-                    <NavLink className="navmylife" to="/home/mylife">Mylife</NavLink>
-                    <AiFillClockCircle className="AiFillClockCircle" />
-
-                </div>
-                <div className="setting_notice">
-                    <div className="nav_help">
-                        <NavLink to="/home/help">
-                            <MdHelp className="icon" />
-                            <span className="navhelp">Help</span>
-                        </NavLink>
-                    </div>
-                    <div className="nav_notice">
-                        <NavLink to="/home/notice">
-                            <AiFillBell className="icon" />
-                            <span className="navnotice">Notice</span>
-                        </NavLink>
-                    </div>
-                    <div className="nav_setting">
-                        <NavLink to="/home/setting">
-                            <AiFillSetting className="icon" />
-                            <span className="navsetting">Setting</span>
-                        </NavLink>
                     </div>
                 </div>
             </div>
